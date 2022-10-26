@@ -1,0 +1,13 @@
+sources:
+  - name: Exchnage
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/sushiswap/exchange
+    transforms:
+      - prefix:
+          value: Exchange_
+          includeRootOperations: true
+      - autoPagination:
+          validateSchema: true
+documents:
+  - ./example-query.graphql
