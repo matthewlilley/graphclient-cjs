@@ -12,6 +12,15 @@ const sdk = getBuiltGraphSDK({
 sdk
   .getLiquidityPositions({
     first: 2500,
+    where: { user: "0x5ad6211cd3fde39a9cecb5df6f380b8263d1e277" },
+  })
+  .catch(() => {
+    log("without skip set initially it fails");
+  });
+
+sdk
+  .getLiquidityPositions({
+    first: 2500,
     skip: 0,
     where: { user: "0x5ad6211cd3fde39a9cecb5df6f380b8263d1e277" },
   })
