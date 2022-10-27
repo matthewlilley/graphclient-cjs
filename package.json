@@ -2,9 +2,15 @@
   "name": "graph-client",
   "version": "0.0.0",
   "private": true,
+  "main": ".graphclient/index.js",
+  "module": ".graphclient/index.mjs",
+  "source": ".graphclient/index.ts",
+  "typings": ".graphclient/index.d.ts",
   "scripts": {
     "dev": "graphclient serve-dev",
-    "build": "graphclient build --fileType json",
+    "build:cjs": "graphclient build --fileType json --throwOnInvalidConfig",
+    "build:esm": "graphclient build --fileType js --throwOnInvalidConfig",
+    "build:ts": "graphclient build --fileType ts --throwOnInvalidConfig",
     "start": "graphclient serve-prod",
     "validate": "graphclient validate",
     "check": "tsc --pretty --noEmit",
@@ -12,11 +18,22 @@
   },
   "dependencies": {
     "@graphprotocol/client-cli": "2.2.15",
+    "@graphql-mesh/utils": "latest",
+    "@graphql-mesh/cache-localforage": "latest",
+    "@whatwg-node/fetch": "latest",
+    "@graphql-mesh/graphql": "latest",
     "@graphprotocol/client-auto-pagination": "latest",
     "@graphprotocol/client-auto-type-merging": "latest",
+    "@graphql-mesh/merger-bare": "latest",
+    "@graphql-mesh/http": "latest",
+    "@graphql-mesh/runtime": "latest",
+    "@graphql-mesh/store": "latest",
+    "@graphql-mesh/cross-helpers": "latest",
+    "tslib": "latest",
     "graphql": "16.6.0"
   },
   "devDependencies": {
+    "chalk": "^4.0.0",
     "ts-node": "10.9.1"
   }
 }
