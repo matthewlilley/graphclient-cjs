@@ -12,26 +12,26 @@ directive @subgraphId(id: String!) on OBJECT
 "creates a virtual field on the entity that may be queried but cannot be set manually through the mappings API."
 directive @derivedFrom(field: String!) on FIELD_DEFINITION
 
-scalar Exchange_BigDecimal
+scalar BigDecimal
 
 scalar BigInt
 
-input Exchange_BlockChangedFilter {
+input BlockChangedFilter {
   number_gte: Int!
 }
 
-input Exchange_Block_height {
-  hash: Exchange_Bytes
+input Block_height {
+  hash: Bytes
   number: Int
   number_gte: Int
 }
 
-type Exchange_Bundle {
+type Bundle {
   id: ID!
-  ethPrice: Exchange_BigDecimal!
+  ethPrice: BigDecimal!
 }
 
-input Exchange_Bundle_filter {
+input Bundle_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -40,41 +40,41 @@ input Exchange_Bundle_filter {
   id_lte: ID
   id_in: [ID!]
   id_not_in: [ID!]
-  ethPrice: Exchange_BigDecimal
-  ethPrice_not: Exchange_BigDecimal
-  ethPrice_gt: Exchange_BigDecimal
-  ethPrice_lt: Exchange_BigDecimal
-  ethPrice_gte: Exchange_BigDecimal
-  ethPrice_lte: Exchange_BigDecimal
-  ethPrice_in: [Exchange_BigDecimal!]
-  ethPrice_not_in: [Exchange_BigDecimal!]
+  ethPrice: BigDecimal
+  ethPrice_not: BigDecimal
+  ethPrice_gt: BigDecimal
+  ethPrice_lt: BigDecimal
+  ethPrice_gte: BigDecimal
+  ethPrice_lte: BigDecimal
+  ethPrice_in: [BigDecimal!]
+  ethPrice_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Bundle_orderBy {
+enum Bundle_orderBy {
   id
   ethPrice
 }
 
-type Exchange_Burn {
+type Burn {
   id: ID!
-  transaction: Exchange_Transaction!
+  transaction: Transaction!
   timestamp: BigInt!
-  pair: Exchange_Pair!
-  liquidity: Exchange_BigDecimal!
-  sender: Exchange_Bytes
-  amount0: Exchange_BigDecimal
-  amount1: Exchange_BigDecimal
-  to: Exchange_Bytes
+  pair: Pair!
+  liquidity: BigDecimal!
+  sender: Bytes
+  amount0: BigDecimal
+  amount1: BigDecimal
+  to: Bytes
   logIndex: BigInt
-  amountUSD: Exchange_BigDecimal
+  amountUSD: BigDecimal
   complete: Boolean!
-  feeTo: Exchange_Bytes
-  feeLiquidity: Exchange_BigDecimal
+  feeTo: Bytes
+  feeLiquidity: BigDecimal
 }
 
-input Exchange_Burn_filter {
+input Burn_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -103,7 +103,7 @@ input Exchange_Burn_filter {
   transaction_ends_with_nocase: String
   transaction_not_ends_with: String
   transaction_not_ends_with_nocase: String
-  transaction_: Exchange_Transaction_filter
+  transaction_: Transaction_filter
   timestamp: BigInt
   timestamp_not: BigInt
   timestamp_gt: BigInt
@@ -132,43 +132,43 @@ input Exchange_Burn_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  liquidity: Exchange_BigDecimal
-  liquidity_not: Exchange_BigDecimal
-  liquidity_gt: Exchange_BigDecimal
-  liquidity_lt: Exchange_BigDecimal
-  liquidity_gte: Exchange_BigDecimal
-  liquidity_lte: Exchange_BigDecimal
-  liquidity_in: [Exchange_BigDecimal!]
-  liquidity_not_in: [Exchange_BigDecimal!]
-  sender: Exchange_Bytes
-  sender_not: Exchange_Bytes
-  sender_in: [Exchange_Bytes!]
-  sender_not_in: [Exchange_Bytes!]
-  sender_contains: Exchange_Bytes
-  sender_not_contains: Exchange_Bytes
-  amount0: Exchange_BigDecimal
-  amount0_not: Exchange_BigDecimal
-  amount0_gt: Exchange_BigDecimal
-  amount0_lt: Exchange_BigDecimal
-  amount0_gte: Exchange_BigDecimal
-  amount0_lte: Exchange_BigDecimal
-  amount0_in: [Exchange_BigDecimal!]
-  amount0_not_in: [Exchange_BigDecimal!]
-  amount1: Exchange_BigDecimal
-  amount1_not: Exchange_BigDecimal
-  amount1_gt: Exchange_BigDecimal
-  amount1_lt: Exchange_BigDecimal
-  amount1_gte: Exchange_BigDecimal
-  amount1_lte: Exchange_BigDecimal
-  amount1_in: [Exchange_BigDecimal!]
-  amount1_not_in: [Exchange_BigDecimal!]
-  to: Exchange_Bytes
-  to_not: Exchange_Bytes
-  to_in: [Exchange_Bytes!]
-  to_not_in: [Exchange_Bytes!]
-  to_contains: Exchange_Bytes
-  to_not_contains: Exchange_Bytes
+  pair_: Pair_filter
+  liquidity: BigDecimal
+  liquidity_not: BigDecimal
+  liquidity_gt: BigDecimal
+  liquidity_lt: BigDecimal
+  liquidity_gte: BigDecimal
+  liquidity_lte: BigDecimal
+  liquidity_in: [BigDecimal!]
+  liquidity_not_in: [BigDecimal!]
+  sender: Bytes
+  sender_not: Bytes
+  sender_in: [Bytes!]
+  sender_not_in: [Bytes!]
+  sender_contains: Bytes
+  sender_not_contains: Bytes
+  amount0: BigDecimal
+  amount0_not: BigDecimal
+  amount0_gt: BigDecimal
+  amount0_lt: BigDecimal
+  amount0_gte: BigDecimal
+  amount0_lte: BigDecimal
+  amount0_in: [BigDecimal!]
+  amount0_not_in: [BigDecimal!]
+  amount1: BigDecimal
+  amount1_not: BigDecimal
+  amount1_gt: BigDecimal
+  amount1_lt: BigDecimal
+  amount1_gte: BigDecimal
+  amount1_lte: BigDecimal
+  amount1_in: [BigDecimal!]
+  amount1_not_in: [BigDecimal!]
+  to: Bytes
+  to_not: Bytes
+  to_in: [Bytes!]
+  to_not_in: [Bytes!]
+  to_contains: Bytes
+  to_not_contains: Bytes
   logIndex: BigInt
   logIndex_not: BigInt
   logIndex_gt: BigInt
@@ -177,37 +177,37 @@ input Exchange_Burn_filter {
   logIndex_lte: BigInt
   logIndex_in: [BigInt!]
   logIndex_not_in: [BigInt!]
-  amountUSD: Exchange_BigDecimal
-  amountUSD_not: Exchange_BigDecimal
-  amountUSD_gt: Exchange_BigDecimal
-  amountUSD_lt: Exchange_BigDecimal
-  amountUSD_gte: Exchange_BigDecimal
-  amountUSD_lte: Exchange_BigDecimal
-  amountUSD_in: [Exchange_BigDecimal!]
-  amountUSD_not_in: [Exchange_BigDecimal!]
+  amountUSD: BigDecimal
+  amountUSD_not: BigDecimal
+  amountUSD_gt: BigDecimal
+  amountUSD_lt: BigDecimal
+  amountUSD_gte: BigDecimal
+  amountUSD_lte: BigDecimal
+  amountUSD_in: [BigDecimal!]
+  amountUSD_not_in: [BigDecimal!]
   complete: Boolean
   complete_not: Boolean
   complete_in: [Boolean!]
   complete_not_in: [Boolean!]
-  feeTo: Exchange_Bytes
-  feeTo_not: Exchange_Bytes
-  feeTo_in: [Exchange_Bytes!]
-  feeTo_not_in: [Exchange_Bytes!]
-  feeTo_contains: Exchange_Bytes
-  feeTo_not_contains: Exchange_Bytes
-  feeLiquidity: Exchange_BigDecimal
-  feeLiquidity_not: Exchange_BigDecimal
-  feeLiquidity_gt: Exchange_BigDecimal
-  feeLiquidity_lt: Exchange_BigDecimal
-  feeLiquidity_gte: Exchange_BigDecimal
-  feeLiquidity_lte: Exchange_BigDecimal
-  feeLiquidity_in: [Exchange_BigDecimal!]
-  feeLiquidity_not_in: [Exchange_BigDecimal!]
+  feeTo: Bytes
+  feeTo_not: Bytes
+  feeTo_in: [Bytes!]
+  feeTo_not_in: [Bytes!]
+  feeTo_contains: Bytes
+  feeTo_not_contains: Bytes
+  feeLiquidity: BigDecimal
+  feeLiquidity_not: BigDecimal
+  feeLiquidity_gt: BigDecimal
+  feeLiquidity_lt: BigDecimal
+  feeLiquidity_gte: BigDecimal
+  feeLiquidity_lte: BigDecimal
+  feeLiquidity_in: [BigDecimal!]
+  feeLiquidity_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Burn_orderBy {
+enum Burn_orderBy {
   id
   transaction
   timestamp
@@ -224,21 +224,21 @@ enum Exchange_Burn_orderBy {
   feeLiquidity
 }
 
-scalar Exchange_Bytes
+scalar Bytes
 
-type Exchange_DayData {
+type DayData {
   id: ID!
   date: Int!
-  factory: Exchange_Factory!
-  volumeETH: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
-  untrackedVolume: Exchange_BigDecimal!
-  liquidityETH: Exchange_BigDecimal!
-  liquidityUSD: Exchange_BigDecimal!
+  factory: Factory!
+  volumeETH: BigDecimal!
+  volumeUSD: BigDecimal!
+  untrackedVolume: BigDecimal!
+  liquidityETH: BigDecimal!
+  liquidityUSD: BigDecimal!
   txCount: BigInt!
 }
 
-input Exchange_DayData_filter {
+input DayData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -275,47 +275,47 @@ input Exchange_DayData_filter {
   factory_ends_with_nocase: String
   factory_not_ends_with: String
   factory_not_ends_with_nocase: String
-  factory_: Exchange_Factory_filter
-  volumeETH: Exchange_BigDecimal
-  volumeETH_not: Exchange_BigDecimal
-  volumeETH_gt: Exchange_BigDecimal
-  volumeETH_lt: Exchange_BigDecimal
-  volumeETH_gte: Exchange_BigDecimal
-  volumeETH_lte: Exchange_BigDecimal
-  volumeETH_in: [Exchange_BigDecimal!]
-  volumeETH_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
-  untrackedVolume: Exchange_BigDecimal
-  untrackedVolume_not: Exchange_BigDecimal
-  untrackedVolume_gt: Exchange_BigDecimal
-  untrackedVolume_lt: Exchange_BigDecimal
-  untrackedVolume_gte: Exchange_BigDecimal
-  untrackedVolume_lte: Exchange_BigDecimal
-  untrackedVolume_in: [Exchange_BigDecimal!]
-  untrackedVolume_not_in: [Exchange_BigDecimal!]
-  liquidityETH: Exchange_BigDecimal
-  liquidityETH_not: Exchange_BigDecimal
-  liquidityETH_gt: Exchange_BigDecimal
-  liquidityETH_lt: Exchange_BigDecimal
-  liquidityETH_gte: Exchange_BigDecimal
-  liquidityETH_lte: Exchange_BigDecimal
-  liquidityETH_in: [Exchange_BigDecimal!]
-  liquidityETH_not_in: [Exchange_BigDecimal!]
-  liquidityUSD: Exchange_BigDecimal
-  liquidityUSD_not: Exchange_BigDecimal
-  liquidityUSD_gt: Exchange_BigDecimal
-  liquidityUSD_lt: Exchange_BigDecimal
-  liquidityUSD_gte: Exchange_BigDecimal
-  liquidityUSD_lte: Exchange_BigDecimal
-  liquidityUSD_in: [Exchange_BigDecimal!]
-  liquidityUSD_not_in: [Exchange_BigDecimal!]
+  factory_: Factory_filter
+  volumeETH: BigDecimal
+  volumeETH_not: BigDecimal
+  volumeETH_gt: BigDecimal
+  volumeETH_lt: BigDecimal
+  volumeETH_gte: BigDecimal
+  volumeETH_lte: BigDecimal
+  volumeETH_in: [BigDecimal!]
+  volumeETH_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
+  untrackedVolume: BigDecimal
+  untrackedVolume_not: BigDecimal
+  untrackedVolume_gt: BigDecimal
+  untrackedVolume_lt: BigDecimal
+  untrackedVolume_gte: BigDecimal
+  untrackedVolume_lte: BigDecimal
+  untrackedVolume_in: [BigDecimal!]
+  untrackedVolume_not_in: [BigDecimal!]
+  liquidityETH: BigDecimal
+  liquidityETH_not: BigDecimal
+  liquidityETH_gt: BigDecimal
+  liquidityETH_lt: BigDecimal
+  liquidityETH_gte: BigDecimal
+  liquidityETH_lte: BigDecimal
+  liquidityETH_in: [BigDecimal!]
+  liquidityETH_not_in: [BigDecimal!]
+  liquidityUSD: BigDecimal
+  liquidityUSD_not: BigDecimal
+  liquidityUSD_gt: BigDecimal
+  liquidityUSD_lt: BigDecimal
+  liquidityUSD_gte: BigDecimal
+  liquidityUSD_lte: BigDecimal
+  liquidityUSD_in: [BigDecimal!]
+  liquidityUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -325,10 +325,10 @@ input Exchange_DayData_filter {
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_DayData_orderBy {
+enum DayData_orderBy {
   id
   date
   factory
@@ -340,24 +340,24 @@ enum Exchange_DayData_orderBy {
   txCount
 }
 
-type Exchange_Factory {
+type Factory {
   id: ID!
   pairCount: BigInt!
-  volumeUSD: Exchange_BigDecimal!
-  volumeETH: Exchange_BigDecimal!
-  untrackedVolumeUSD: Exchange_BigDecimal!
-  liquidityUSD: Exchange_BigDecimal!
-  liquidityETH: Exchange_BigDecimal!
+  volumeUSD: BigDecimal!
+  volumeETH: BigDecimal!
+  untrackedVolumeUSD: BigDecimal!
+  liquidityUSD: BigDecimal!
+  liquidityETH: BigDecimal!
   txCount: BigInt!
   tokenCount: BigInt!
   userCount: BigInt!
-  pairs(skip: Int = 0, first: Int = 100, orderBy: Exchange_Pair_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Pair_filter): [Exchange_Pair!]!
-  tokens(skip: Int = 0, first: Int = 100, orderBy: Exchange_Token_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Token_filter): [Exchange_Token!]!
-  hourData(skip: Int = 0, first: Int = 100, orderBy: Exchange_HourData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_HourData_filter): [Exchange_HourData!]!
-  dayData(skip: Int = 0, first: Int = 100, orderBy: Exchange_DayData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_DayData_filter): [Exchange_DayData!]!
+  pairs(skip: Int = 0, first: Int = 100, orderBy: Pair_orderBy, orderDirection: OrderDirection, where: Pair_filter): [Pair!]!
+  tokens(skip: Int = 0, first: Int = 100, orderBy: Token_orderBy, orderDirection: OrderDirection, where: Token_filter): [Token!]!
+  hourData(skip: Int = 0, first: Int = 100, orderBy: HourData_orderBy, orderDirection: OrderDirection, where: HourData_filter): [HourData!]!
+  dayData(skip: Int = 0, first: Int = 100, orderBy: DayData_orderBy, orderDirection: OrderDirection, where: DayData_filter): [DayData!]!
 }
 
-input Exchange_Factory_filter {
+input Factory_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -374,46 +374,46 @@ input Exchange_Factory_filter {
   pairCount_lte: BigInt
   pairCount_in: [BigInt!]
   pairCount_not_in: [BigInt!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
-  volumeETH: Exchange_BigDecimal
-  volumeETH_not: Exchange_BigDecimal
-  volumeETH_gt: Exchange_BigDecimal
-  volumeETH_lt: Exchange_BigDecimal
-  volumeETH_gte: Exchange_BigDecimal
-  volumeETH_lte: Exchange_BigDecimal
-  volumeETH_in: [Exchange_BigDecimal!]
-  volumeETH_not_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD: Exchange_BigDecimal
-  untrackedVolumeUSD_not: Exchange_BigDecimal
-  untrackedVolumeUSD_gt: Exchange_BigDecimal
-  untrackedVolumeUSD_lt: Exchange_BigDecimal
-  untrackedVolumeUSD_gte: Exchange_BigDecimal
-  untrackedVolumeUSD_lte: Exchange_BigDecimal
-  untrackedVolumeUSD_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD_not_in: [Exchange_BigDecimal!]
-  liquidityUSD: Exchange_BigDecimal
-  liquidityUSD_not: Exchange_BigDecimal
-  liquidityUSD_gt: Exchange_BigDecimal
-  liquidityUSD_lt: Exchange_BigDecimal
-  liquidityUSD_gte: Exchange_BigDecimal
-  liquidityUSD_lte: Exchange_BigDecimal
-  liquidityUSD_in: [Exchange_BigDecimal!]
-  liquidityUSD_not_in: [Exchange_BigDecimal!]
-  liquidityETH: Exchange_BigDecimal
-  liquidityETH_not: Exchange_BigDecimal
-  liquidityETH_gt: Exchange_BigDecimal
-  liquidityETH_lt: Exchange_BigDecimal
-  liquidityETH_gte: Exchange_BigDecimal
-  liquidityETH_lte: Exchange_BigDecimal
-  liquidityETH_in: [Exchange_BigDecimal!]
-  liquidityETH_not_in: [Exchange_BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
+  volumeETH: BigDecimal
+  volumeETH_not: BigDecimal
+  volumeETH_gt: BigDecimal
+  volumeETH_lt: BigDecimal
+  volumeETH_gte: BigDecimal
+  volumeETH_lte: BigDecimal
+  volumeETH_in: [BigDecimal!]
+  volumeETH_not_in: [BigDecimal!]
+  untrackedVolumeUSD: BigDecimal
+  untrackedVolumeUSD_not: BigDecimal
+  untrackedVolumeUSD_gt: BigDecimal
+  untrackedVolumeUSD_lt: BigDecimal
+  untrackedVolumeUSD_gte: BigDecimal
+  untrackedVolumeUSD_lte: BigDecimal
+  untrackedVolumeUSD_in: [BigDecimal!]
+  untrackedVolumeUSD_not_in: [BigDecimal!]
+  liquidityUSD: BigDecimal
+  liquidityUSD_not: BigDecimal
+  liquidityUSD_gt: BigDecimal
+  liquidityUSD_lt: BigDecimal
+  liquidityUSD_gte: BigDecimal
+  liquidityUSD_lte: BigDecimal
+  liquidityUSD_in: [BigDecimal!]
+  liquidityUSD_not_in: [BigDecimal!]
+  liquidityETH: BigDecimal
+  liquidityETH_not: BigDecimal
+  liquidityETH_gt: BigDecimal
+  liquidityETH_lt: BigDecimal
+  liquidityETH_gte: BigDecimal
+  liquidityETH_lte: BigDecimal
+  liquidityETH_in: [BigDecimal!]
+  liquidityETH_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -438,15 +438,15 @@ input Exchange_Factory_filter {
   userCount_lte: BigInt
   userCount_in: [BigInt!]
   userCount_not_in: [BigInt!]
-  pairs_: Exchange_Pair_filter
-  tokens_: Exchange_Token_filter
-  hourData_: Exchange_HourData_filter
-  dayData_: Exchange_DayData_filter
+  pairs_: Pair_filter
+  tokens_: Token_filter
+  hourData_: HourData_filter
+  dayData_: DayData_filter
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Factory_orderBy {
+enum Factory_orderBy {
   id
   pairCount
   volumeUSD
@@ -463,19 +463,19 @@ enum Exchange_Factory_orderBy {
   dayData
 }
 
-type Exchange_HourData {
+type HourData {
   id: ID!
   date: Int!
-  factory: Exchange_Factory!
-  volumeETH: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
-  untrackedVolume: Exchange_BigDecimal!
-  liquidityETH: Exchange_BigDecimal!
-  liquidityUSD: Exchange_BigDecimal!
+  factory: Factory!
+  volumeETH: BigDecimal!
+  volumeUSD: BigDecimal!
+  untrackedVolume: BigDecimal!
+  liquidityETH: BigDecimal!
+  liquidityUSD: BigDecimal!
   txCount: BigInt!
 }
 
-input Exchange_HourData_filter {
+input HourData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -512,47 +512,47 @@ input Exchange_HourData_filter {
   factory_ends_with_nocase: String
   factory_not_ends_with: String
   factory_not_ends_with_nocase: String
-  factory_: Exchange_Factory_filter
-  volumeETH: Exchange_BigDecimal
-  volumeETH_not: Exchange_BigDecimal
-  volumeETH_gt: Exchange_BigDecimal
-  volumeETH_lt: Exchange_BigDecimal
-  volumeETH_gte: Exchange_BigDecimal
-  volumeETH_lte: Exchange_BigDecimal
-  volumeETH_in: [Exchange_BigDecimal!]
-  volumeETH_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
-  untrackedVolume: Exchange_BigDecimal
-  untrackedVolume_not: Exchange_BigDecimal
-  untrackedVolume_gt: Exchange_BigDecimal
-  untrackedVolume_lt: Exchange_BigDecimal
-  untrackedVolume_gte: Exchange_BigDecimal
-  untrackedVolume_lte: Exchange_BigDecimal
-  untrackedVolume_in: [Exchange_BigDecimal!]
-  untrackedVolume_not_in: [Exchange_BigDecimal!]
-  liquidityETH: Exchange_BigDecimal
-  liquidityETH_not: Exchange_BigDecimal
-  liquidityETH_gt: Exchange_BigDecimal
-  liquidityETH_lt: Exchange_BigDecimal
-  liquidityETH_gte: Exchange_BigDecimal
-  liquidityETH_lte: Exchange_BigDecimal
-  liquidityETH_in: [Exchange_BigDecimal!]
-  liquidityETH_not_in: [Exchange_BigDecimal!]
-  liquidityUSD: Exchange_BigDecimal
-  liquidityUSD_not: Exchange_BigDecimal
-  liquidityUSD_gt: Exchange_BigDecimal
-  liquidityUSD_lt: Exchange_BigDecimal
-  liquidityUSD_gte: Exchange_BigDecimal
-  liquidityUSD_lte: Exchange_BigDecimal
-  liquidityUSD_in: [Exchange_BigDecimal!]
-  liquidityUSD_not_in: [Exchange_BigDecimal!]
+  factory_: Factory_filter
+  volumeETH: BigDecimal
+  volumeETH_not: BigDecimal
+  volumeETH_gt: BigDecimal
+  volumeETH_lt: BigDecimal
+  volumeETH_gte: BigDecimal
+  volumeETH_lte: BigDecimal
+  volumeETH_in: [BigDecimal!]
+  volumeETH_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
+  untrackedVolume: BigDecimal
+  untrackedVolume_not: BigDecimal
+  untrackedVolume_gt: BigDecimal
+  untrackedVolume_lt: BigDecimal
+  untrackedVolume_gte: BigDecimal
+  untrackedVolume_lte: BigDecimal
+  untrackedVolume_in: [BigDecimal!]
+  untrackedVolume_not_in: [BigDecimal!]
+  liquidityETH: BigDecimal
+  liquidityETH_not: BigDecimal
+  liquidityETH_gt: BigDecimal
+  liquidityETH_lt: BigDecimal
+  liquidityETH_gte: BigDecimal
+  liquidityETH_lte: BigDecimal
+  liquidityETH_in: [BigDecimal!]
+  liquidityETH_not_in: [BigDecimal!]
+  liquidityUSD: BigDecimal
+  liquidityUSD_not: BigDecimal
+  liquidityUSD_gt: BigDecimal
+  liquidityUSD_lt: BigDecimal
+  liquidityUSD_gte: BigDecimal
+  liquidityUSD_lte: BigDecimal
+  liquidityUSD_in: [BigDecimal!]
+  liquidityUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -562,10 +562,10 @@ input Exchange_HourData_filter {
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_HourData_orderBy {
+enum HourData_orderBy {
   id
   date
   factory
@@ -577,33 +577,33 @@ enum Exchange_HourData_orderBy {
   txCount
 }
 
-type Exchange_LiquidityPosition {
+type LiquidityPosition {
   id: ID!
-  user: Exchange_User!
-  pair: Exchange_Pair!
-  liquidityTokenBalance: Exchange_BigDecimal!
-  snapshots(skip: Int = 0, first: Int = 100, orderBy: Exchange_LiquidityPositionSnapshot_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_LiquidityPositionSnapshot_filter): [Exchange_LiquidityPositionSnapshot]!
+  user: User!
+  pair: Pair!
+  liquidityTokenBalance: BigDecimal!
+  snapshots(skip: Int = 0, first: Int = 100, orderBy: LiquidityPositionSnapshot_orderBy, orderDirection: OrderDirection, where: LiquidityPositionSnapshot_filter): [LiquidityPositionSnapshot]!
   block: Int!
   timestamp: Int!
 }
 
-type Exchange_LiquidityPositionSnapshot {
+type LiquidityPositionSnapshot {
   id: ID!
-  liquidityPosition: Exchange_LiquidityPosition!
+  liquidityPosition: LiquidityPosition!
   timestamp: Int!
   block: Int!
-  user: Exchange_User!
-  pair: Exchange_Pair!
-  token0PriceUSD: Exchange_BigDecimal!
-  token1PriceUSD: Exchange_BigDecimal!
-  reserve0: Exchange_BigDecimal!
-  reserve1: Exchange_BigDecimal!
-  reserveUSD: Exchange_BigDecimal!
-  liquidityTokenTotalSupply: Exchange_BigDecimal!
-  liquidityTokenBalance: Exchange_BigDecimal!
+  user: User!
+  pair: Pair!
+  token0PriceUSD: BigDecimal!
+  token1PriceUSD: BigDecimal!
+  reserve0: BigDecimal!
+  reserve1: BigDecimal!
+  reserveUSD: BigDecimal!
+  liquidityTokenTotalSupply: BigDecimal!
+  liquidityTokenBalance: BigDecimal!
 }
 
-input Exchange_LiquidityPositionSnapshot_filter {
+input LiquidityPositionSnapshot_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -632,7 +632,7 @@ input Exchange_LiquidityPositionSnapshot_filter {
   liquidityPosition_ends_with_nocase: String
   liquidityPosition_not_ends_with: String
   liquidityPosition_not_ends_with_nocase: String
-  liquidityPosition_: Exchange_LiquidityPosition_filter
+  liquidityPosition_: LiquidityPosition_filter
   timestamp: Int
   timestamp_not: Int
   timestamp_gt: Int
@@ -669,7 +669,7 @@ input Exchange_LiquidityPositionSnapshot_filter {
   user_ends_with_nocase: String
   user_not_ends_with: String
   user_not_ends_with_nocase: String
-  user_: Exchange_User_filter
+  user_: User_filter
   pair: String
   pair_not: String
   pair_gt: String
@@ -690,68 +690,68 @@ input Exchange_LiquidityPositionSnapshot_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  token0PriceUSD: Exchange_BigDecimal
-  token0PriceUSD_not: Exchange_BigDecimal
-  token0PriceUSD_gt: Exchange_BigDecimal
-  token0PriceUSD_lt: Exchange_BigDecimal
-  token0PriceUSD_gte: Exchange_BigDecimal
-  token0PriceUSD_lte: Exchange_BigDecimal
-  token0PriceUSD_in: [Exchange_BigDecimal!]
-  token0PriceUSD_not_in: [Exchange_BigDecimal!]
-  token1PriceUSD: Exchange_BigDecimal
-  token1PriceUSD_not: Exchange_BigDecimal
-  token1PriceUSD_gt: Exchange_BigDecimal
-  token1PriceUSD_lt: Exchange_BigDecimal
-  token1PriceUSD_gte: Exchange_BigDecimal
-  token1PriceUSD_lte: Exchange_BigDecimal
-  token1PriceUSD_in: [Exchange_BigDecimal!]
-  token1PriceUSD_not_in: [Exchange_BigDecimal!]
-  reserve0: Exchange_BigDecimal
-  reserve0_not: Exchange_BigDecimal
-  reserve0_gt: Exchange_BigDecimal
-  reserve0_lt: Exchange_BigDecimal
-  reserve0_gte: Exchange_BigDecimal
-  reserve0_lte: Exchange_BigDecimal
-  reserve0_in: [Exchange_BigDecimal!]
-  reserve0_not_in: [Exchange_BigDecimal!]
-  reserve1: Exchange_BigDecimal
-  reserve1_not: Exchange_BigDecimal
-  reserve1_gt: Exchange_BigDecimal
-  reserve1_lt: Exchange_BigDecimal
-  reserve1_gte: Exchange_BigDecimal
-  reserve1_lte: Exchange_BigDecimal
-  reserve1_in: [Exchange_BigDecimal!]
-  reserve1_not_in: [Exchange_BigDecimal!]
-  reserveUSD: Exchange_BigDecimal
-  reserveUSD_not: Exchange_BigDecimal
-  reserveUSD_gt: Exchange_BigDecimal
-  reserveUSD_lt: Exchange_BigDecimal
-  reserveUSD_gte: Exchange_BigDecimal
-  reserveUSD_lte: Exchange_BigDecimal
-  reserveUSD_in: [Exchange_BigDecimal!]
-  reserveUSD_not_in: [Exchange_BigDecimal!]
-  liquidityTokenTotalSupply: Exchange_BigDecimal
-  liquidityTokenTotalSupply_not: Exchange_BigDecimal
-  liquidityTokenTotalSupply_gt: Exchange_BigDecimal
-  liquidityTokenTotalSupply_lt: Exchange_BigDecimal
-  liquidityTokenTotalSupply_gte: Exchange_BigDecimal
-  liquidityTokenTotalSupply_lte: Exchange_BigDecimal
-  liquidityTokenTotalSupply_in: [Exchange_BigDecimal!]
-  liquidityTokenTotalSupply_not_in: [Exchange_BigDecimal!]
-  liquidityTokenBalance: Exchange_BigDecimal
-  liquidityTokenBalance_not: Exchange_BigDecimal
-  liquidityTokenBalance_gt: Exchange_BigDecimal
-  liquidityTokenBalance_lt: Exchange_BigDecimal
-  liquidityTokenBalance_gte: Exchange_BigDecimal
-  liquidityTokenBalance_lte: Exchange_BigDecimal
-  liquidityTokenBalance_in: [Exchange_BigDecimal!]
-  liquidityTokenBalance_not_in: [Exchange_BigDecimal!]
+  pair_: Pair_filter
+  token0PriceUSD: BigDecimal
+  token0PriceUSD_not: BigDecimal
+  token0PriceUSD_gt: BigDecimal
+  token0PriceUSD_lt: BigDecimal
+  token0PriceUSD_gte: BigDecimal
+  token0PriceUSD_lte: BigDecimal
+  token0PriceUSD_in: [BigDecimal!]
+  token0PriceUSD_not_in: [BigDecimal!]
+  token1PriceUSD: BigDecimal
+  token1PriceUSD_not: BigDecimal
+  token1PriceUSD_gt: BigDecimal
+  token1PriceUSD_lt: BigDecimal
+  token1PriceUSD_gte: BigDecimal
+  token1PriceUSD_lte: BigDecimal
+  token1PriceUSD_in: [BigDecimal!]
+  token1PriceUSD_not_in: [BigDecimal!]
+  reserve0: BigDecimal
+  reserve0_not: BigDecimal
+  reserve0_gt: BigDecimal
+  reserve0_lt: BigDecimal
+  reserve0_gte: BigDecimal
+  reserve0_lte: BigDecimal
+  reserve0_in: [BigDecimal!]
+  reserve0_not_in: [BigDecimal!]
+  reserve1: BigDecimal
+  reserve1_not: BigDecimal
+  reserve1_gt: BigDecimal
+  reserve1_lt: BigDecimal
+  reserve1_gte: BigDecimal
+  reserve1_lte: BigDecimal
+  reserve1_in: [BigDecimal!]
+  reserve1_not_in: [BigDecimal!]
+  reserveUSD: BigDecimal
+  reserveUSD_not: BigDecimal
+  reserveUSD_gt: BigDecimal
+  reserveUSD_lt: BigDecimal
+  reserveUSD_gte: BigDecimal
+  reserveUSD_lte: BigDecimal
+  reserveUSD_in: [BigDecimal!]
+  reserveUSD_not_in: [BigDecimal!]
+  liquidityTokenTotalSupply: BigDecimal
+  liquidityTokenTotalSupply_not: BigDecimal
+  liquidityTokenTotalSupply_gt: BigDecimal
+  liquidityTokenTotalSupply_lt: BigDecimal
+  liquidityTokenTotalSupply_gte: BigDecimal
+  liquidityTokenTotalSupply_lte: BigDecimal
+  liquidityTokenTotalSupply_in: [BigDecimal!]
+  liquidityTokenTotalSupply_not_in: [BigDecimal!]
+  liquidityTokenBalance: BigDecimal
+  liquidityTokenBalance_not: BigDecimal
+  liquidityTokenBalance_gt: BigDecimal
+  liquidityTokenBalance_lt: BigDecimal
+  liquidityTokenBalance_gte: BigDecimal
+  liquidityTokenBalance_lte: BigDecimal
+  liquidityTokenBalance_in: [BigDecimal!]
+  liquidityTokenBalance_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_LiquidityPositionSnapshot_orderBy {
+enum LiquidityPositionSnapshot_orderBy {
   id
   liquidityPosition
   timestamp
@@ -767,7 +767,7 @@ enum Exchange_LiquidityPositionSnapshot_orderBy {
   liquidityTokenBalance
 }
 
-input Exchange_LiquidityPosition_filter {
+input LiquidityPosition_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -796,7 +796,7 @@ input Exchange_LiquidityPosition_filter {
   user_ends_with_nocase: String
   user_not_ends_with: String
   user_not_ends_with_nocase: String
-  user_: Exchange_User_filter
+  user_: User_filter
   pair: String
   pair_not: String
   pair_gt: String
@@ -817,16 +817,16 @@ input Exchange_LiquidityPosition_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  liquidityTokenBalance: Exchange_BigDecimal
-  liquidityTokenBalance_not: Exchange_BigDecimal
-  liquidityTokenBalance_gt: Exchange_BigDecimal
-  liquidityTokenBalance_lt: Exchange_BigDecimal
-  liquidityTokenBalance_gte: Exchange_BigDecimal
-  liquidityTokenBalance_lte: Exchange_BigDecimal
-  liquidityTokenBalance_in: [Exchange_BigDecimal!]
-  liquidityTokenBalance_not_in: [Exchange_BigDecimal!]
-  snapshots_: Exchange_LiquidityPositionSnapshot_filter
+  pair_: Pair_filter
+  liquidityTokenBalance: BigDecimal
+  liquidityTokenBalance_not: BigDecimal
+  liquidityTokenBalance_gt: BigDecimal
+  liquidityTokenBalance_lt: BigDecimal
+  liquidityTokenBalance_gte: BigDecimal
+  liquidityTokenBalance_lte: BigDecimal
+  liquidityTokenBalance_in: [BigDecimal!]
+  liquidityTokenBalance_not_in: [BigDecimal!]
+  snapshots_: LiquidityPositionSnapshot_filter
   block: Int
   block_not: Int
   block_gt: Int
@@ -844,10 +844,10 @@ input Exchange_LiquidityPosition_filter {
   timestamp_in: [Int!]
   timestamp_not_in: [Int!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_LiquidityPosition_orderBy {
+enum LiquidityPosition_orderBy {
   id
   user
   pair
@@ -857,23 +857,23 @@ enum Exchange_LiquidityPosition_orderBy {
   timestamp
 }
 
-type Exchange_Mint {
+type Mint {
   id: ID!
-  transaction: Exchange_Transaction!
+  transaction: Transaction!
   timestamp: BigInt!
-  pair: Exchange_Pair!
-  to: Exchange_Bytes!
-  liquidity: Exchange_BigDecimal!
-  sender: Exchange_Bytes
-  amount0: Exchange_BigDecimal
-  amount1: Exchange_BigDecimal
+  pair: Pair!
+  to: Bytes!
+  liquidity: BigDecimal!
+  sender: Bytes
+  amount0: BigDecimal
+  amount1: BigDecimal
   logIndex: BigInt
-  amountUSD: Exchange_BigDecimal
-  feeTo: Exchange_Bytes
-  feeLiquidity: Exchange_BigDecimal
+  amountUSD: BigDecimal
+  feeTo: Bytes
+  feeLiquidity: BigDecimal
 }
 
-input Exchange_Mint_filter {
+input Mint_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -902,7 +902,7 @@ input Exchange_Mint_filter {
   transaction_ends_with_nocase: String
   transaction_not_ends_with: String
   transaction_not_ends_with_nocase: String
-  transaction_: Exchange_Transaction_filter
+  transaction_: Transaction_filter
   timestamp: BigInt
   timestamp_not: BigInt
   timestamp_gt: BigInt
@@ -931,43 +931,43 @@ input Exchange_Mint_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  to: Exchange_Bytes
-  to_not: Exchange_Bytes
-  to_in: [Exchange_Bytes!]
-  to_not_in: [Exchange_Bytes!]
-  to_contains: Exchange_Bytes
-  to_not_contains: Exchange_Bytes
-  liquidity: Exchange_BigDecimal
-  liquidity_not: Exchange_BigDecimal
-  liquidity_gt: Exchange_BigDecimal
-  liquidity_lt: Exchange_BigDecimal
-  liquidity_gte: Exchange_BigDecimal
-  liquidity_lte: Exchange_BigDecimal
-  liquidity_in: [Exchange_BigDecimal!]
-  liquidity_not_in: [Exchange_BigDecimal!]
-  sender: Exchange_Bytes
-  sender_not: Exchange_Bytes
-  sender_in: [Exchange_Bytes!]
-  sender_not_in: [Exchange_Bytes!]
-  sender_contains: Exchange_Bytes
-  sender_not_contains: Exchange_Bytes
-  amount0: Exchange_BigDecimal
-  amount0_not: Exchange_BigDecimal
-  amount0_gt: Exchange_BigDecimal
-  amount0_lt: Exchange_BigDecimal
-  amount0_gte: Exchange_BigDecimal
-  amount0_lte: Exchange_BigDecimal
-  amount0_in: [Exchange_BigDecimal!]
-  amount0_not_in: [Exchange_BigDecimal!]
-  amount1: Exchange_BigDecimal
-  amount1_not: Exchange_BigDecimal
-  amount1_gt: Exchange_BigDecimal
-  amount1_lt: Exchange_BigDecimal
-  amount1_gte: Exchange_BigDecimal
-  amount1_lte: Exchange_BigDecimal
-  amount1_in: [Exchange_BigDecimal!]
-  amount1_not_in: [Exchange_BigDecimal!]
+  pair_: Pair_filter
+  to: Bytes
+  to_not: Bytes
+  to_in: [Bytes!]
+  to_not_in: [Bytes!]
+  to_contains: Bytes
+  to_not_contains: Bytes
+  liquidity: BigDecimal
+  liquidity_not: BigDecimal
+  liquidity_gt: BigDecimal
+  liquidity_lt: BigDecimal
+  liquidity_gte: BigDecimal
+  liquidity_lte: BigDecimal
+  liquidity_in: [BigDecimal!]
+  liquidity_not_in: [BigDecimal!]
+  sender: Bytes
+  sender_not: Bytes
+  sender_in: [Bytes!]
+  sender_not_in: [Bytes!]
+  sender_contains: Bytes
+  sender_not_contains: Bytes
+  amount0: BigDecimal
+  amount0_not: BigDecimal
+  amount0_gt: BigDecimal
+  amount0_lt: BigDecimal
+  amount0_gte: BigDecimal
+  amount0_lte: BigDecimal
+  amount0_in: [BigDecimal!]
+  amount0_not_in: [BigDecimal!]
+  amount1: BigDecimal
+  amount1_not: BigDecimal
+  amount1_gt: BigDecimal
+  amount1_lt: BigDecimal
+  amount1_gte: BigDecimal
+  amount1_lte: BigDecimal
+  amount1_in: [BigDecimal!]
+  amount1_not_in: [BigDecimal!]
   logIndex: BigInt
   logIndex_not: BigInt
   logIndex_gt: BigInt
@@ -976,33 +976,33 @@ input Exchange_Mint_filter {
   logIndex_lte: BigInt
   logIndex_in: [BigInt!]
   logIndex_not_in: [BigInt!]
-  amountUSD: Exchange_BigDecimal
-  amountUSD_not: Exchange_BigDecimal
-  amountUSD_gt: Exchange_BigDecimal
-  amountUSD_lt: Exchange_BigDecimal
-  amountUSD_gte: Exchange_BigDecimal
-  amountUSD_lte: Exchange_BigDecimal
-  amountUSD_in: [Exchange_BigDecimal!]
-  amountUSD_not_in: [Exchange_BigDecimal!]
-  feeTo: Exchange_Bytes
-  feeTo_not: Exchange_Bytes
-  feeTo_in: [Exchange_Bytes!]
-  feeTo_not_in: [Exchange_Bytes!]
-  feeTo_contains: Exchange_Bytes
-  feeTo_not_contains: Exchange_Bytes
-  feeLiquidity: Exchange_BigDecimal
-  feeLiquidity_not: Exchange_BigDecimal
-  feeLiquidity_gt: Exchange_BigDecimal
-  feeLiquidity_lt: Exchange_BigDecimal
-  feeLiquidity_gte: Exchange_BigDecimal
-  feeLiquidity_lte: Exchange_BigDecimal
-  feeLiquidity_in: [Exchange_BigDecimal!]
-  feeLiquidity_not_in: [Exchange_BigDecimal!]
+  amountUSD: BigDecimal
+  amountUSD_not: BigDecimal
+  amountUSD_gt: BigDecimal
+  amountUSD_lt: BigDecimal
+  amountUSD_gte: BigDecimal
+  amountUSD_lte: BigDecimal
+  amountUSD_in: [BigDecimal!]
+  amountUSD_not_in: [BigDecimal!]
+  feeTo: Bytes
+  feeTo_not: Bytes
+  feeTo_in: [Bytes!]
+  feeTo_not_in: [Bytes!]
+  feeTo_contains: Bytes
+  feeTo_not_contains: Bytes
+  feeLiquidity: BigDecimal
+  feeLiquidity_not: BigDecimal
+  feeLiquidity_gt: BigDecimal
+  feeLiquidity_lt: BigDecimal
+  feeLiquidity_gte: BigDecimal
+  feeLiquidity_lte: BigDecimal
+  feeLiquidity_in: [BigDecimal!]
+  feeLiquidity_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Mint_orderBy {
+enum Mint_orderBy {
   id
   transaction
   timestamp
@@ -1019,59 +1019,59 @@ enum Exchange_Mint_orderBy {
 }
 
 """Defines the order direction, either ascending or descending"""
-enum Exchange_OrderDirection {
+enum OrderDirection {
   asc
   desc
 }
 
-type Exchange_Pair {
+type Pair {
   id: ID!
-  factory: Exchange_Factory!
+  factory: Factory!
   name: String!
-  token0: Exchange_Token!
-  token1: Exchange_Token!
-  reserve0: Exchange_BigDecimal!
-  reserve1: Exchange_BigDecimal!
-  totalSupply: Exchange_BigDecimal!
-  reserveETH: Exchange_BigDecimal!
-  reserveUSD: Exchange_BigDecimal!
-  trackedReserveETH: Exchange_BigDecimal!
-  token0Price: Exchange_BigDecimal!
-  token1Price: Exchange_BigDecimal!
-  volumeToken0: Exchange_BigDecimal!
-  volumeToken1: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
-  untrackedVolumeUSD: Exchange_BigDecimal!
+  token0: Token!
+  token1: Token!
+  reserve0: BigDecimal!
+  reserve1: BigDecimal!
+  totalSupply: BigDecimal!
+  reserveETH: BigDecimal!
+  reserveUSD: BigDecimal!
+  trackedReserveETH: BigDecimal!
+  token0Price: BigDecimal!
+  token1Price: BigDecimal!
+  volumeToken0: BigDecimal!
+  volumeToken1: BigDecimal!
+  volumeUSD: BigDecimal!
+  untrackedVolumeUSD: BigDecimal!
   txCount: BigInt!
   liquidityProviderCount: BigInt!
-  liquidityPositions(skip: Int = 0, first: Int = 100, orderBy: Exchange_LiquidityPosition_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_LiquidityPosition_filter): [Exchange_LiquidityPosition!]!
-  liquidityPositionSnapshots(skip: Int = 0, first: Int = 100, orderBy: Exchange_LiquidityPositionSnapshot_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_LiquidityPositionSnapshot_filter): [Exchange_LiquidityPositionSnapshot!]!
-  dayData(skip: Int = 0, first: Int = 100, orderBy: Exchange_PairDayData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_PairDayData_filter): [Exchange_PairDayData!]!
-  hourData(skip: Int = 0, first: Int = 100, orderBy: Exchange_PairHourData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_PairHourData_filter): [Exchange_PairHourData!]!
-  mints(skip: Int = 0, first: Int = 100, orderBy: Exchange_Mint_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Mint_filter): [Exchange_Mint!]!
-  burns(skip: Int = 0, first: Int = 100, orderBy: Exchange_Burn_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Burn_filter): [Exchange_Burn!]!
-  swaps(skip: Int = 0, first: Int = 100, orderBy: Exchange_Swap_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Swap_filter): [Exchange_Swap!]!
+  liquidityPositions(skip: Int = 0, first: Int = 100, orderBy: LiquidityPosition_orderBy, orderDirection: OrderDirection, where: LiquidityPosition_filter): [LiquidityPosition!]!
+  liquidityPositionSnapshots(skip: Int = 0, first: Int = 100, orderBy: LiquidityPositionSnapshot_orderBy, orderDirection: OrderDirection, where: LiquidityPositionSnapshot_filter): [LiquidityPositionSnapshot!]!
+  dayData(skip: Int = 0, first: Int = 100, orderBy: PairDayData_orderBy, orderDirection: OrderDirection, where: PairDayData_filter): [PairDayData!]!
+  hourData(skip: Int = 0, first: Int = 100, orderBy: PairHourData_orderBy, orderDirection: OrderDirection, where: PairHourData_filter): [PairHourData!]!
+  mints(skip: Int = 0, first: Int = 100, orderBy: Mint_orderBy, orderDirection: OrderDirection, where: Mint_filter): [Mint!]!
+  burns(skip: Int = 0, first: Int = 100, orderBy: Burn_orderBy, orderDirection: OrderDirection, where: Burn_filter): [Burn!]!
+  swaps(skip: Int = 0, first: Int = 100, orderBy: Swap_orderBy, orderDirection: OrderDirection, where: Swap_filter): [Swap!]!
   timestamp: BigInt!
   block: BigInt!
 }
 
-type Exchange_PairDayData {
+type PairDayData {
   id: ID!
   date: Int!
-  pair: Exchange_Pair!
-  token0: Exchange_Token!
-  token1: Exchange_Token!
-  reserve0: Exchange_BigDecimal!
-  reserve1: Exchange_BigDecimal!
-  totalSupply: Exchange_BigDecimal!
-  reserveUSD: Exchange_BigDecimal!
-  volumeToken0: Exchange_BigDecimal!
-  volumeToken1: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
+  pair: Pair!
+  token0: Token!
+  token1: Token!
+  reserve0: BigDecimal!
+  reserve1: BigDecimal!
+  totalSupply: BigDecimal!
+  reserveUSD: BigDecimal!
+  volumeToken0: BigDecimal!
+  volumeToken1: BigDecimal!
+  volumeUSD: BigDecimal!
   txCount: BigInt!
 }
 
-input Exchange_PairDayData_filter {
+input PairDayData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -1108,7 +1108,7 @@ input Exchange_PairDayData_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
+  pair_: Pair_filter
   token0: String
   token0_not: String
   token0_gt: String
@@ -1129,7 +1129,7 @@ input Exchange_PairDayData_filter {
   token0_ends_with_nocase: String
   token0_not_ends_with: String
   token0_not_ends_with_nocase: String
-  token0_: Exchange_Token_filter
+  token0_: Token_filter
   token1: String
   token1_not: String
   token1_gt: String
@@ -1150,63 +1150,63 @@ input Exchange_PairDayData_filter {
   token1_ends_with_nocase: String
   token1_not_ends_with: String
   token1_not_ends_with_nocase: String
-  token1_: Exchange_Token_filter
-  reserve0: Exchange_BigDecimal
-  reserve0_not: Exchange_BigDecimal
-  reserve0_gt: Exchange_BigDecimal
-  reserve0_lt: Exchange_BigDecimal
-  reserve0_gte: Exchange_BigDecimal
-  reserve0_lte: Exchange_BigDecimal
-  reserve0_in: [Exchange_BigDecimal!]
-  reserve0_not_in: [Exchange_BigDecimal!]
-  reserve1: Exchange_BigDecimal
-  reserve1_not: Exchange_BigDecimal
-  reserve1_gt: Exchange_BigDecimal
-  reserve1_lt: Exchange_BigDecimal
-  reserve1_gte: Exchange_BigDecimal
-  reserve1_lte: Exchange_BigDecimal
-  reserve1_in: [Exchange_BigDecimal!]
-  reserve1_not_in: [Exchange_BigDecimal!]
-  totalSupply: Exchange_BigDecimal
-  totalSupply_not: Exchange_BigDecimal
-  totalSupply_gt: Exchange_BigDecimal
-  totalSupply_lt: Exchange_BigDecimal
-  totalSupply_gte: Exchange_BigDecimal
-  totalSupply_lte: Exchange_BigDecimal
-  totalSupply_in: [Exchange_BigDecimal!]
-  totalSupply_not_in: [Exchange_BigDecimal!]
-  reserveUSD: Exchange_BigDecimal
-  reserveUSD_not: Exchange_BigDecimal
-  reserveUSD_gt: Exchange_BigDecimal
-  reserveUSD_lt: Exchange_BigDecimal
-  reserveUSD_gte: Exchange_BigDecimal
-  reserveUSD_lte: Exchange_BigDecimal
-  reserveUSD_in: [Exchange_BigDecimal!]
-  reserveUSD_not_in: [Exchange_BigDecimal!]
-  volumeToken0: Exchange_BigDecimal
-  volumeToken0_not: Exchange_BigDecimal
-  volumeToken0_gt: Exchange_BigDecimal
-  volumeToken0_lt: Exchange_BigDecimal
-  volumeToken0_gte: Exchange_BigDecimal
-  volumeToken0_lte: Exchange_BigDecimal
-  volumeToken0_in: [Exchange_BigDecimal!]
-  volumeToken0_not_in: [Exchange_BigDecimal!]
-  volumeToken1: Exchange_BigDecimal
-  volumeToken1_not: Exchange_BigDecimal
-  volumeToken1_gt: Exchange_BigDecimal
-  volumeToken1_lt: Exchange_BigDecimal
-  volumeToken1_gte: Exchange_BigDecimal
-  volumeToken1_lte: Exchange_BigDecimal
-  volumeToken1_in: [Exchange_BigDecimal!]
-  volumeToken1_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
+  token1_: Token_filter
+  reserve0: BigDecimal
+  reserve0_not: BigDecimal
+  reserve0_gt: BigDecimal
+  reserve0_lt: BigDecimal
+  reserve0_gte: BigDecimal
+  reserve0_lte: BigDecimal
+  reserve0_in: [BigDecimal!]
+  reserve0_not_in: [BigDecimal!]
+  reserve1: BigDecimal
+  reserve1_not: BigDecimal
+  reserve1_gt: BigDecimal
+  reserve1_lt: BigDecimal
+  reserve1_gte: BigDecimal
+  reserve1_lte: BigDecimal
+  reserve1_in: [BigDecimal!]
+  reserve1_not_in: [BigDecimal!]
+  totalSupply: BigDecimal
+  totalSupply_not: BigDecimal
+  totalSupply_gt: BigDecimal
+  totalSupply_lt: BigDecimal
+  totalSupply_gte: BigDecimal
+  totalSupply_lte: BigDecimal
+  totalSupply_in: [BigDecimal!]
+  totalSupply_not_in: [BigDecimal!]
+  reserveUSD: BigDecimal
+  reserveUSD_not: BigDecimal
+  reserveUSD_gt: BigDecimal
+  reserveUSD_lt: BigDecimal
+  reserveUSD_gte: BigDecimal
+  reserveUSD_lte: BigDecimal
+  reserveUSD_in: [BigDecimal!]
+  reserveUSD_not_in: [BigDecimal!]
+  volumeToken0: BigDecimal
+  volumeToken0_not: BigDecimal
+  volumeToken0_gt: BigDecimal
+  volumeToken0_lt: BigDecimal
+  volumeToken0_gte: BigDecimal
+  volumeToken0_lte: BigDecimal
+  volumeToken0_in: [BigDecimal!]
+  volumeToken0_not_in: [BigDecimal!]
+  volumeToken1: BigDecimal
+  volumeToken1_not: BigDecimal
+  volumeToken1_gt: BigDecimal
+  volumeToken1_lt: BigDecimal
+  volumeToken1_gte: BigDecimal
+  volumeToken1_lte: BigDecimal
+  volumeToken1_in: [BigDecimal!]
+  volumeToken1_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -1216,10 +1216,10 @@ input Exchange_PairDayData_filter {
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_PairDayData_orderBy {
+enum PairDayData_orderBy {
   id
   date
   pair
@@ -1235,20 +1235,20 @@ enum Exchange_PairDayData_orderBy {
   txCount
 }
 
-type Exchange_PairHourData {
+type PairHourData {
   id: ID!
   date: Int!
-  pair: Exchange_Pair!
-  reserve0: Exchange_BigDecimal!
-  reserve1: Exchange_BigDecimal!
-  reserveUSD: Exchange_BigDecimal!
-  volumeToken0: Exchange_BigDecimal!
-  volumeToken1: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
+  pair: Pair!
+  reserve0: BigDecimal!
+  reserve1: BigDecimal!
+  reserveUSD: BigDecimal!
+  volumeToken0: BigDecimal!
+  volumeToken1: BigDecimal!
+  volumeUSD: BigDecimal!
   txCount: BigInt!
 }
 
-input Exchange_PairHourData_filter {
+input PairHourData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -1285,55 +1285,55 @@ input Exchange_PairHourData_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  reserve0: Exchange_BigDecimal
-  reserve0_not: Exchange_BigDecimal
-  reserve0_gt: Exchange_BigDecimal
-  reserve0_lt: Exchange_BigDecimal
-  reserve0_gte: Exchange_BigDecimal
-  reserve0_lte: Exchange_BigDecimal
-  reserve0_in: [Exchange_BigDecimal!]
-  reserve0_not_in: [Exchange_BigDecimal!]
-  reserve1: Exchange_BigDecimal
-  reserve1_not: Exchange_BigDecimal
-  reserve1_gt: Exchange_BigDecimal
-  reserve1_lt: Exchange_BigDecimal
-  reserve1_gte: Exchange_BigDecimal
-  reserve1_lte: Exchange_BigDecimal
-  reserve1_in: [Exchange_BigDecimal!]
-  reserve1_not_in: [Exchange_BigDecimal!]
-  reserveUSD: Exchange_BigDecimal
-  reserveUSD_not: Exchange_BigDecimal
-  reserveUSD_gt: Exchange_BigDecimal
-  reserveUSD_lt: Exchange_BigDecimal
-  reserveUSD_gte: Exchange_BigDecimal
-  reserveUSD_lte: Exchange_BigDecimal
-  reserveUSD_in: [Exchange_BigDecimal!]
-  reserveUSD_not_in: [Exchange_BigDecimal!]
-  volumeToken0: Exchange_BigDecimal
-  volumeToken0_not: Exchange_BigDecimal
-  volumeToken0_gt: Exchange_BigDecimal
-  volumeToken0_lt: Exchange_BigDecimal
-  volumeToken0_gte: Exchange_BigDecimal
-  volumeToken0_lte: Exchange_BigDecimal
-  volumeToken0_in: [Exchange_BigDecimal!]
-  volumeToken0_not_in: [Exchange_BigDecimal!]
-  volumeToken1: Exchange_BigDecimal
-  volumeToken1_not: Exchange_BigDecimal
-  volumeToken1_gt: Exchange_BigDecimal
-  volumeToken1_lt: Exchange_BigDecimal
-  volumeToken1_gte: Exchange_BigDecimal
-  volumeToken1_lte: Exchange_BigDecimal
-  volumeToken1_in: [Exchange_BigDecimal!]
-  volumeToken1_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
+  pair_: Pair_filter
+  reserve0: BigDecimal
+  reserve0_not: BigDecimal
+  reserve0_gt: BigDecimal
+  reserve0_lt: BigDecimal
+  reserve0_gte: BigDecimal
+  reserve0_lte: BigDecimal
+  reserve0_in: [BigDecimal!]
+  reserve0_not_in: [BigDecimal!]
+  reserve1: BigDecimal
+  reserve1_not: BigDecimal
+  reserve1_gt: BigDecimal
+  reserve1_lt: BigDecimal
+  reserve1_gte: BigDecimal
+  reserve1_lte: BigDecimal
+  reserve1_in: [BigDecimal!]
+  reserve1_not_in: [BigDecimal!]
+  reserveUSD: BigDecimal
+  reserveUSD_not: BigDecimal
+  reserveUSD_gt: BigDecimal
+  reserveUSD_lt: BigDecimal
+  reserveUSD_gte: BigDecimal
+  reserveUSD_lte: BigDecimal
+  reserveUSD_in: [BigDecimal!]
+  reserveUSD_not_in: [BigDecimal!]
+  volumeToken0: BigDecimal
+  volumeToken0_not: BigDecimal
+  volumeToken0_gt: BigDecimal
+  volumeToken0_lt: BigDecimal
+  volumeToken0_gte: BigDecimal
+  volumeToken0_lte: BigDecimal
+  volumeToken0_in: [BigDecimal!]
+  volumeToken0_not_in: [BigDecimal!]
+  volumeToken1: BigDecimal
+  volumeToken1_not: BigDecimal
+  volumeToken1_gt: BigDecimal
+  volumeToken1_lt: BigDecimal
+  volumeToken1_gte: BigDecimal
+  volumeToken1_lte: BigDecimal
+  volumeToken1_in: [BigDecimal!]
+  volumeToken1_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -1343,10 +1343,10 @@ input Exchange_PairHourData_filter {
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_PairHourData_orderBy {
+enum PairHourData_orderBy {
   id
   date
   pair
@@ -1359,7 +1359,7 @@ enum Exchange_PairHourData_orderBy {
   txCount
 }
 
-input Exchange_Pair_filter {
+input Pair_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -1388,7 +1388,7 @@ input Exchange_Pair_filter {
   factory_ends_with_nocase: String
   factory_not_ends_with: String
   factory_not_ends_with_nocase: String
-  factory_: Exchange_Factory_filter
+  factory_: Factory_filter
   name: String
   name_not: String
   name_gt: String
@@ -1429,7 +1429,7 @@ input Exchange_Pair_filter {
   token0_ends_with_nocase: String
   token0_not_ends_with: String
   token0_not_ends_with_nocase: String
-  token0_: Exchange_Token_filter
+  token0_: Token_filter
   token1: String
   token1_not: String
   token1_gt: String
@@ -1450,103 +1450,103 @@ input Exchange_Pair_filter {
   token1_ends_with_nocase: String
   token1_not_ends_with: String
   token1_not_ends_with_nocase: String
-  token1_: Exchange_Token_filter
-  reserve0: Exchange_BigDecimal
-  reserve0_not: Exchange_BigDecimal
-  reserve0_gt: Exchange_BigDecimal
-  reserve0_lt: Exchange_BigDecimal
-  reserve0_gte: Exchange_BigDecimal
-  reserve0_lte: Exchange_BigDecimal
-  reserve0_in: [Exchange_BigDecimal!]
-  reserve0_not_in: [Exchange_BigDecimal!]
-  reserve1: Exchange_BigDecimal
-  reserve1_not: Exchange_BigDecimal
-  reserve1_gt: Exchange_BigDecimal
-  reserve1_lt: Exchange_BigDecimal
-  reserve1_gte: Exchange_BigDecimal
-  reserve1_lte: Exchange_BigDecimal
-  reserve1_in: [Exchange_BigDecimal!]
-  reserve1_not_in: [Exchange_BigDecimal!]
-  totalSupply: Exchange_BigDecimal
-  totalSupply_not: Exchange_BigDecimal
-  totalSupply_gt: Exchange_BigDecimal
-  totalSupply_lt: Exchange_BigDecimal
-  totalSupply_gte: Exchange_BigDecimal
-  totalSupply_lte: Exchange_BigDecimal
-  totalSupply_in: [Exchange_BigDecimal!]
-  totalSupply_not_in: [Exchange_BigDecimal!]
-  reserveETH: Exchange_BigDecimal
-  reserveETH_not: Exchange_BigDecimal
-  reserveETH_gt: Exchange_BigDecimal
-  reserveETH_lt: Exchange_BigDecimal
-  reserveETH_gte: Exchange_BigDecimal
-  reserveETH_lte: Exchange_BigDecimal
-  reserveETH_in: [Exchange_BigDecimal!]
-  reserveETH_not_in: [Exchange_BigDecimal!]
-  reserveUSD: Exchange_BigDecimal
-  reserveUSD_not: Exchange_BigDecimal
-  reserveUSD_gt: Exchange_BigDecimal
-  reserveUSD_lt: Exchange_BigDecimal
-  reserveUSD_gte: Exchange_BigDecimal
-  reserveUSD_lte: Exchange_BigDecimal
-  reserveUSD_in: [Exchange_BigDecimal!]
-  reserveUSD_not_in: [Exchange_BigDecimal!]
-  trackedReserveETH: Exchange_BigDecimal
-  trackedReserveETH_not: Exchange_BigDecimal
-  trackedReserveETH_gt: Exchange_BigDecimal
-  trackedReserveETH_lt: Exchange_BigDecimal
-  trackedReserveETH_gte: Exchange_BigDecimal
-  trackedReserveETH_lte: Exchange_BigDecimal
-  trackedReserveETH_in: [Exchange_BigDecimal!]
-  trackedReserveETH_not_in: [Exchange_BigDecimal!]
-  token0Price: Exchange_BigDecimal
-  token0Price_not: Exchange_BigDecimal
-  token0Price_gt: Exchange_BigDecimal
-  token0Price_lt: Exchange_BigDecimal
-  token0Price_gte: Exchange_BigDecimal
-  token0Price_lte: Exchange_BigDecimal
-  token0Price_in: [Exchange_BigDecimal!]
-  token0Price_not_in: [Exchange_BigDecimal!]
-  token1Price: Exchange_BigDecimal
-  token1Price_not: Exchange_BigDecimal
-  token1Price_gt: Exchange_BigDecimal
-  token1Price_lt: Exchange_BigDecimal
-  token1Price_gte: Exchange_BigDecimal
-  token1Price_lte: Exchange_BigDecimal
-  token1Price_in: [Exchange_BigDecimal!]
-  token1Price_not_in: [Exchange_BigDecimal!]
-  volumeToken0: Exchange_BigDecimal
-  volumeToken0_not: Exchange_BigDecimal
-  volumeToken0_gt: Exchange_BigDecimal
-  volumeToken0_lt: Exchange_BigDecimal
-  volumeToken0_gte: Exchange_BigDecimal
-  volumeToken0_lte: Exchange_BigDecimal
-  volumeToken0_in: [Exchange_BigDecimal!]
-  volumeToken0_not_in: [Exchange_BigDecimal!]
-  volumeToken1: Exchange_BigDecimal
-  volumeToken1_not: Exchange_BigDecimal
-  volumeToken1_gt: Exchange_BigDecimal
-  volumeToken1_lt: Exchange_BigDecimal
-  volumeToken1_gte: Exchange_BigDecimal
-  volumeToken1_lte: Exchange_BigDecimal
-  volumeToken1_in: [Exchange_BigDecimal!]
-  volumeToken1_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD: Exchange_BigDecimal
-  untrackedVolumeUSD_not: Exchange_BigDecimal
-  untrackedVolumeUSD_gt: Exchange_BigDecimal
-  untrackedVolumeUSD_lt: Exchange_BigDecimal
-  untrackedVolumeUSD_gte: Exchange_BigDecimal
-  untrackedVolumeUSD_lte: Exchange_BigDecimal
-  untrackedVolumeUSD_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD_not_in: [Exchange_BigDecimal!]
+  token1_: Token_filter
+  reserve0: BigDecimal
+  reserve0_not: BigDecimal
+  reserve0_gt: BigDecimal
+  reserve0_lt: BigDecimal
+  reserve0_gte: BigDecimal
+  reserve0_lte: BigDecimal
+  reserve0_in: [BigDecimal!]
+  reserve0_not_in: [BigDecimal!]
+  reserve1: BigDecimal
+  reserve1_not: BigDecimal
+  reserve1_gt: BigDecimal
+  reserve1_lt: BigDecimal
+  reserve1_gte: BigDecimal
+  reserve1_lte: BigDecimal
+  reserve1_in: [BigDecimal!]
+  reserve1_not_in: [BigDecimal!]
+  totalSupply: BigDecimal
+  totalSupply_not: BigDecimal
+  totalSupply_gt: BigDecimal
+  totalSupply_lt: BigDecimal
+  totalSupply_gte: BigDecimal
+  totalSupply_lte: BigDecimal
+  totalSupply_in: [BigDecimal!]
+  totalSupply_not_in: [BigDecimal!]
+  reserveETH: BigDecimal
+  reserveETH_not: BigDecimal
+  reserveETH_gt: BigDecimal
+  reserveETH_lt: BigDecimal
+  reserveETH_gte: BigDecimal
+  reserveETH_lte: BigDecimal
+  reserveETH_in: [BigDecimal!]
+  reserveETH_not_in: [BigDecimal!]
+  reserveUSD: BigDecimal
+  reserveUSD_not: BigDecimal
+  reserveUSD_gt: BigDecimal
+  reserveUSD_lt: BigDecimal
+  reserveUSD_gte: BigDecimal
+  reserveUSD_lte: BigDecimal
+  reserveUSD_in: [BigDecimal!]
+  reserveUSD_not_in: [BigDecimal!]
+  trackedReserveETH: BigDecimal
+  trackedReserveETH_not: BigDecimal
+  trackedReserveETH_gt: BigDecimal
+  trackedReserveETH_lt: BigDecimal
+  trackedReserveETH_gte: BigDecimal
+  trackedReserveETH_lte: BigDecimal
+  trackedReserveETH_in: [BigDecimal!]
+  trackedReserveETH_not_in: [BigDecimal!]
+  token0Price: BigDecimal
+  token0Price_not: BigDecimal
+  token0Price_gt: BigDecimal
+  token0Price_lt: BigDecimal
+  token0Price_gte: BigDecimal
+  token0Price_lte: BigDecimal
+  token0Price_in: [BigDecimal!]
+  token0Price_not_in: [BigDecimal!]
+  token1Price: BigDecimal
+  token1Price_not: BigDecimal
+  token1Price_gt: BigDecimal
+  token1Price_lt: BigDecimal
+  token1Price_gte: BigDecimal
+  token1Price_lte: BigDecimal
+  token1Price_in: [BigDecimal!]
+  token1Price_not_in: [BigDecimal!]
+  volumeToken0: BigDecimal
+  volumeToken0_not: BigDecimal
+  volumeToken0_gt: BigDecimal
+  volumeToken0_lt: BigDecimal
+  volumeToken0_gte: BigDecimal
+  volumeToken0_lte: BigDecimal
+  volumeToken0_in: [BigDecimal!]
+  volumeToken0_not_in: [BigDecimal!]
+  volumeToken1: BigDecimal
+  volumeToken1_not: BigDecimal
+  volumeToken1_gt: BigDecimal
+  volumeToken1_lt: BigDecimal
+  volumeToken1_gte: BigDecimal
+  volumeToken1_lte: BigDecimal
+  volumeToken1_in: [BigDecimal!]
+  volumeToken1_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
+  untrackedVolumeUSD: BigDecimal
+  untrackedVolumeUSD_not: BigDecimal
+  untrackedVolumeUSD_gt: BigDecimal
+  untrackedVolumeUSD_lt: BigDecimal
+  untrackedVolumeUSD_gte: BigDecimal
+  untrackedVolumeUSD_lte: BigDecimal
+  untrackedVolumeUSD_in: [BigDecimal!]
+  untrackedVolumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -1563,13 +1563,13 @@ input Exchange_Pair_filter {
   liquidityProviderCount_lte: BigInt
   liquidityProviderCount_in: [BigInt!]
   liquidityProviderCount_not_in: [BigInt!]
-  liquidityPositions_: Exchange_LiquidityPosition_filter
-  liquidityPositionSnapshots_: Exchange_LiquidityPositionSnapshot_filter
-  dayData_: Exchange_PairDayData_filter
-  hourData_: Exchange_PairHourData_filter
-  mints_: Exchange_Mint_filter
-  burns_: Exchange_Burn_filter
-  swaps_: Exchange_Swap_filter
+  liquidityPositions_: LiquidityPosition_filter
+  liquidityPositionSnapshots_: LiquidityPositionSnapshot_filter
+  dayData_: PairDayData_filter
+  hourData_: PairHourData_filter
+  mints_: Mint_filter
+  burns_: Burn_filter
+  swaps_: Swap_filter
   timestamp: BigInt
   timestamp_not: BigInt
   timestamp_gt: BigInt
@@ -1587,10 +1587,10 @@ input Exchange_Pair_filter {
   block_in: [BigInt!]
   block_not_in: [BigInt!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Pair_orderBy {
+enum Pair_orderBy {
   id
   factory
   name
@@ -1622,954 +1622,954 @@ enum Exchange_Pair_orderBy {
 }
 
 type Query {
-  Exchange_user(
+  user(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_User
-  Exchange_users(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): User
+  users(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_User_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_User_filter
+    orderBy: User_orderBy
+    orderDirection: OrderDirection
+    where: User_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_User!]!
-  Exchange_bundle(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [User!]! @merge(keyField: "id", keyArg: "where.id_in")
+  bundle(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Bundle
-  Exchange_bundles(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Bundle
+  bundles(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Bundle_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Bundle_filter
+    orderBy: Bundle_orderBy
+    orderDirection: OrderDirection
+    where: Bundle_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Bundle!]!
-  Exchange_factory(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Bundle!]! @merge(keyField: "id", keyArg: "where.id_in")
+  factory(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Factory
-  Exchange_factories(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Factory
+  factories(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Factory_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Factory_filter
+    orderBy: Factory_orderBy
+    orderDirection: OrderDirection
+    where: Factory_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Factory!]!
-  Exchange_hourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Factory!]! @merge(keyField: "id", keyArg: "where.id_in")
+  hourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_HourData
-  Exchange_hourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): HourData
+  hourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_HourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_HourData_filter
+    orderBy: HourData_orderBy
+    orderDirection: OrderDirection
+    where: HourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_HourData!]!
-  Exchange_dayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [HourData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  dayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_DayData
-  Exchange_dayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DayData
+  dayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_DayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_DayData_filter
+    orderBy: DayData_orderBy
+    orderDirection: OrderDirection
+    where: DayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_DayData!]!
-  Exchange_token(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DayData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  token(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Token
-  Exchange_tokens(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Token
+  tokens(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Token_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Token_filter
+    orderBy: Token_orderBy
+    orderDirection: OrderDirection
+    where: Token_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Token!]!
-  Exchange_tokenHourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Token!]! @merge(keyField: "id", keyArg: "where.id_in")
+  tokenHourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_TokenHourData
-  Exchange_tokenHourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TokenHourData
+  tokenHourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_TokenHourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_TokenHourData_filter
+    orderBy: TokenHourData_orderBy
+    orderDirection: OrderDirection
+    where: TokenHourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_TokenHourData!]!
-  Exchange_tokenDayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TokenHourData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  tokenDayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_TokenDayData
-  Exchange_tokenDayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TokenDayData
+  tokenDayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_TokenDayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_TokenDayData_filter
+    orderBy: TokenDayData_orderBy
+    orderDirection: OrderDirection
+    where: TokenDayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_TokenDayData!]!
-  Exchange_pair(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TokenDayData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  pair(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Pair
-  Exchange_pairs(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Pair
+  pairs(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Pair_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Pair_filter
+    orderBy: Pair_orderBy
+    orderDirection: OrderDirection
+    where: Pair_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Pair!]!
-  Exchange_pairHourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Pair!]! @merge(keyField: "id", keyArg: "where.id_in")
+  pairHourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_PairHourData
-  Exchange_pairHourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PairHourData
+  pairHourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_PairHourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_PairHourData_filter
+    orderBy: PairHourData_orderBy
+    orderDirection: OrderDirection
+    where: PairHourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_PairHourData!]!
-  Exchange_pairDayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PairHourData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  pairDayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_PairDayData
-  Exchange_pairDayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PairDayData
+  pairDayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_PairDayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_PairDayData_filter
+    orderBy: PairDayData_orderBy
+    orderDirection: OrderDirection
+    where: PairDayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_PairDayData!]!
-  Exchange_liquidityPosition(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PairDayData!]! @merge(keyField: "id", keyArg: "where.id_in")
+  liquidityPosition(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_LiquidityPosition
-  Exchange_liquidityPositions(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): LiquidityPosition
+  liquidityPositions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_LiquidityPosition_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_LiquidityPosition_filter
+    orderBy: LiquidityPosition_orderBy
+    orderDirection: OrderDirection
+    where: LiquidityPosition_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_LiquidityPosition!]!
-  Exchange_liquidityPositionSnapshot(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [LiquidityPosition!]! @merge(keyField: "id", keyArg: "where.id_in")
+  liquidityPositionSnapshot(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_LiquidityPositionSnapshot
-  Exchange_liquidityPositionSnapshots(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): LiquidityPositionSnapshot
+  liquidityPositionSnapshots(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_LiquidityPositionSnapshot_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_LiquidityPositionSnapshot_filter
+    orderBy: LiquidityPositionSnapshot_orderBy
+    orderDirection: OrderDirection
+    where: LiquidityPositionSnapshot_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_LiquidityPositionSnapshot!]!
-  Exchange_transaction(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [LiquidityPositionSnapshot!]! @merge(keyField: "id", keyArg: "where.id_in")
+  transaction(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Transaction
-  Exchange_transactions(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Transaction
+  transactions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Transaction_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Transaction_filter
+    orderBy: Transaction_orderBy
+    orderDirection: OrderDirection
+    where: Transaction_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Transaction!]!
-  Exchange_mint(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Transaction!]! @merge(keyField: "id", keyArg: "where.id_in")
+  mint(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Mint
-  Exchange_mints(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Mint
+  mints(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Mint_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Mint_filter
+    orderBy: Mint_orderBy
+    orderDirection: OrderDirection
+    where: Mint_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Mint!]!
-  Exchange_burn(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Mint!]! @merge(keyField: "id", keyArg: "where.id_in")
+  burn(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Burn
-  Exchange_burns(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Burn
+  burns(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Burn_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Burn_filter
+    orderBy: Burn_orderBy
+    orderDirection: OrderDirection
+    where: Burn_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Burn!]!
-  Exchange_swap(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Burn!]! @merge(keyField: "id", keyArg: "where.id_in")
+  swap(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Swap
-  Exchange_swaps(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Swap
+  swaps(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Swap_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Swap_filter
+    orderBy: Swap_orderBy
+    orderDirection: OrderDirection
+    where: Swap_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Swap!]!
-  Exchange_tokenSearch(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Swap!]! @merge(keyField: "id", keyArg: "where.id_in")
+  tokenSearch(
     text: String!
     first: Int = 100
     skip: Int = 0
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Token!]!
-  Exchange_pairSearch(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Token!]!
+  pairSearch(
     text: String!
     first: Int = 100
     skip: Int = 0
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Pair!]!
-  Exchange_userSearch(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Pair!]!
+  userSearch(
     text: String!
     first: Int = 100
     skip: Int = 0
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_User!]!
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [User!]!
   """Access to subgraph metadata"""
-  Exchange__meta(block: Exchange_Block_height): Exchange__Meta_
+  _meta(block: Block_height): _Meta_
 }
 
 type Subscription {
-  Exchange_user(
+  user(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_User
-  Exchange_users(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): User
+  users(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_User_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_User_filter
+    orderBy: User_orderBy
+    orderDirection: OrderDirection
+    where: User_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_User!]!
-  Exchange_bundle(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [User!]!
+  bundle(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Bundle
-  Exchange_bundles(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Bundle
+  bundles(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Bundle_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Bundle_filter
+    orderBy: Bundle_orderBy
+    orderDirection: OrderDirection
+    where: Bundle_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Bundle!]!
-  Exchange_factory(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Bundle!]!
+  factory(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Factory
-  Exchange_factories(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Factory
+  factories(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Factory_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Factory_filter
+    orderBy: Factory_orderBy
+    orderDirection: OrderDirection
+    where: Factory_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Factory!]!
-  Exchange_hourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Factory!]!
+  hourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_HourData
-  Exchange_hourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): HourData
+  hourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_HourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_HourData_filter
+    orderBy: HourData_orderBy
+    orderDirection: OrderDirection
+    where: HourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_HourData!]!
-  Exchange_dayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [HourData!]!
+  dayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_DayData
-  Exchange_dayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DayData
+  dayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_DayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_DayData_filter
+    orderBy: DayData_orderBy
+    orderDirection: OrderDirection
+    where: DayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_DayData!]!
-  Exchange_token(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DayData!]!
+  token(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Token
-  Exchange_tokens(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Token
+  tokens(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Token_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Token_filter
+    orderBy: Token_orderBy
+    orderDirection: OrderDirection
+    where: Token_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Token!]!
-  Exchange_tokenHourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Token!]!
+  tokenHourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_TokenHourData
-  Exchange_tokenHourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TokenHourData
+  tokenHourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_TokenHourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_TokenHourData_filter
+    orderBy: TokenHourData_orderBy
+    orderDirection: OrderDirection
+    where: TokenHourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_TokenHourData!]!
-  Exchange_tokenDayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TokenHourData!]!
+  tokenDayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_TokenDayData
-  Exchange_tokenDayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TokenDayData
+  tokenDayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_TokenDayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_TokenDayData_filter
+    orderBy: TokenDayData_orderBy
+    orderDirection: OrderDirection
+    where: TokenDayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_TokenDayData!]!
-  Exchange_pair(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TokenDayData!]!
+  pair(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Pair
-  Exchange_pairs(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Pair
+  pairs(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Pair_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Pair_filter
+    orderBy: Pair_orderBy
+    orderDirection: OrderDirection
+    where: Pair_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Pair!]!
-  Exchange_pairHourData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Pair!]!
+  pairHourData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_PairHourData
-  Exchange_pairHourDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PairHourData
+  pairHourDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_PairHourData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_PairHourData_filter
+    orderBy: PairHourData_orderBy
+    orderDirection: OrderDirection
+    where: PairHourData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_PairHourData!]!
-  Exchange_pairDayData(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PairHourData!]!
+  pairDayData(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_PairDayData
-  Exchange_pairDayDatas(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PairDayData
+  pairDayDatas(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_PairDayData_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_PairDayData_filter
+    orderBy: PairDayData_orderBy
+    orderDirection: OrderDirection
+    where: PairDayData_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_PairDayData!]!
-  Exchange_liquidityPosition(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PairDayData!]!
+  liquidityPosition(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_LiquidityPosition
-  Exchange_liquidityPositions(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): LiquidityPosition
+  liquidityPositions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_LiquidityPosition_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_LiquidityPosition_filter
+    orderBy: LiquidityPosition_orderBy
+    orderDirection: OrderDirection
+    where: LiquidityPosition_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_LiquidityPosition!]!
-  Exchange_liquidityPositionSnapshot(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [LiquidityPosition!]!
+  liquidityPositionSnapshot(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_LiquidityPositionSnapshot
-  Exchange_liquidityPositionSnapshots(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): LiquidityPositionSnapshot
+  liquidityPositionSnapshots(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_LiquidityPositionSnapshot_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_LiquidityPositionSnapshot_filter
+    orderBy: LiquidityPositionSnapshot_orderBy
+    orderDirection: OrderDirection
+    where: LiquidityPositionSnapshot_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_LiquidityPositionSnapshot!]!
-  Exchange_transaction(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [LiquidityPositionSnapshot!]!
+  transaction(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Transaction
-  Exchange_transactions(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Transaction
+  transactions(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Transaction_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Transaction_filter
+    orderBy: Transaction_orderBy
+    orderDirection: OrderDirection
+    where: Transaction_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Transaction!]!
-  Exchange_mint(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Transaction!]!
+  mint(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Mint
-  Exchange_mints(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Mint
+  mints(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Mint_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Mint_filter
+    orderBy: Mint_orderBy
+    orderDirection: OrderDirection
+    where: Mint_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Mint!]!
-  Exchange_burn(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Mint!]!
+  burn(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Burn
-  Exchange_burns(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Burn
+  burns(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Burn_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Burn_filter
+    orderBy: Burn_orderBy
+    orderDirection: OrderDirection
+    where: Burn_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Burn!]!
-  Exchange_swap(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Burn!]!
+  swap(
     id: ID!
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): Exchange_Swap
-  Exchange_swaps(
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Swap
+  swaps(
     skip: Int = 0
     first: Int = 100
-    orderBy: Exchange_Swap_orderBy
-    orderDirection: Exchange_OrderDirection
-    where: Exchange_Swap_filter
+    orderBy: Swap_orderBy
+    orderDirection: OrderDirection
+    where: Swap_filter
     """
     The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
     """
-    block: Exchange_Block_height
+    block: Block_height
     """
     Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
     """
-    subgraphError: Exchange__SubgraphErrorPolicy_! = deny
-  ): [Exchange_Swap!]!
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Swap!]!
   """Access to subgraph metadata"""
-  Exchange__meta(block: Exchange_Block_height): Exchange__Meta_
+  _meta(block: Block_height): _Meta_
 }
 
-type Exchange_Swap {
+type Swap {
   id: ID!
-  transaction: Exchange_Transaction!
+  transaction: Transaction!
   timestamp: BigInt!
-  pair: Exchange_Pair!
-  sender: Exchange_Bytes!
-  amount0In: Exchange_BigDecimal!
-  amount1In: Exchange_BigDecimal!
-  amount0Out: Exchange_BigDecimal!
-  amount1Out: Exchange_BigDecimal!
-  to: Exchange_Bytes!
+  pair: Pair!
+  sender: Bytes!
+  amount0In: BigDecimal!
+  amount1In: BigDecimal!
+  amount0Out: BigDecimal!
+  amount1Out: BigDecimal!
+  to: Bytes!
   logIndex: BigInt
-  amountUSD: Exchange_BigDecimal!
+  amountUSD: BigDecimal!
 }
 
-input Exchange_Swap_filter {
+input Swap_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -2598,7 +2598,7 @@ input Exchange_Swap_filter {
   transaction_ends_with_nocase: String
   transaction_not_ends_with: String
   transaction_not_ends_with_nocase: String
-  transaction_: Exchange_Transaction_filter
+  transaction_: Transaction_filter
   timestamp: BigInt
   timestamp_not: BigInt
   timestamp_gt: BigInt
@@ -2627,51 +2627,51 @@ input Exchange_Swap_filter {
   pair_ends_with_nocase: String
   pair_not_ends_with: String
   pair_not_ends_with_nocase: String
-  pair_: Exchange_Pair_filter
-  sender: Exchange_Bytes
-  sender_not: Exchange_Bytes
-  sender_in: [Exchange_Bytes!]
-  sender_not_in: [Exchange_Bytes!]
-  sender_contains: Exchange_Bytes
-  sender_not_contains: Exchange_Bytes
-  amount0In: Exchange_BigDecimal
-  amount0In_not: Exchange_BigDecimal
-  amount0In_gt: Exchange_BigDecimal
-  amount0In_lt: Exchange_BigDecimal
-  amount0In_gte: Exchange_BigDecimal
-  amount0In_lte: Exchange_BigDecimal
-  amount0In_in: [Exchange_BigDecimal!]
-  amount0In_not_in: [Exchange_BigDecimal!]
-  amount1In: Exchange_BigDecimal
-  amount1In_not: Exchange_BigDecimal
-  amount1In_gt: Exchange_BigDecimal
-  amount1In_lt: Exchange_BigDecimal
-  amount1In_gte: Exchange_BigDecimal
-  amount1In_lte: Exchange_BigDecimal
-  amount1In_in: [Exchange_BigDecimal!]
-  amount1In_not_in: [Exchange_BigDecimal!]
-  amount0Out: Exchange_BigDecimal
-  amount0Out_not: Exchange_BigDecimal
-  amount0Out_gt: Exchange_BigDecimal
-  amount0Out_lt: Exchange_BigDecimal
-  amount0Out_gte: Exchange_BigDecimal
-  amount0Out_lte: Exchange_BigDecimal
-  amount0Out_in: [Exchange_BigDecimal!]
-  amount0Out_not_in: [Exchange_BigDecimal!]
-  amount1Out: Exchange_BigDecimal
-  amount1Out_not: Exchange_BigDecimal
-  amount1Out_gt: Exchange_BigDecimal
-  amount1Out_lt: Exchange_BigDecimal
-  amount1Out_gte: Exchange_BigDecimal
-  amount1Out_lte: Exchange_BigDecimal
-  amount1Out_in: [Exchange_BigDecimal!]
-  amount1Out_not_in: [Exchange_BigDecimal!]
-  to: Exchange_Bytes
-  to_not: Exchange_Bytes
-  to_in: [Exchange_Bytes!]
-  to_not_in: [Exchange_Bytes!]
-  to_contains: Exchange_Bytes
-  to_not_contains: Exchange_Bytes
+  pair_: Pair_filter
+  sender: Bytes
+  sender_not: Bytes
+  sender_in: [Bytes!]
+  sender_not_in: [Bytes!]
+  sender_contains: Bytes
+  sender_not_contains: Bytes
+  amount0In: BigDecimal
+  amount0In_not: BigDecimal
+  amount0In_gt: BigDecimal
+  amount0In_lt: BigDecimal
+  amount0In_gte: BigDecimal
+  amount0In_lte: BigDecimal
+  amount0In_in: [BigDecimal!]
+  amount0In_not_in: [BigDecimal!]
+  amount1In: BigDecimal
+  amount1In_not: BigDecimal
+  amount1In_gt: BigDecimal
+  amount1In_lt: BigDecimal
+  amount1In_gte: BigDecimal
+  amount1In_lte: BigDecimal
+  amount1In_in: [BigDecimal!]
+  amount1In_not_in: [BigDecimal!]
+  amount0Out: BigDecimal
+  amount0Out_not: BigDecimal
+  amount0Out_gt: BigDecimal
+  amount0Out_lt: BigDecimal
+  amount0Out_gte: BigDecimal
+  amount0Out_lte: BigDecimal
+  amount0Out_in: [BigDecimal!]
+  amount0Out_not_in: [BigDecimal!]
+  amount1Out: BigDecimal
+  amount1Out_not: BigDecimal
+  amount1Out_gt: BigDecimal
+  amount1Out_lt: BigDecimal
+  amount1Out_gte: BigDecimal
+  amount1Out_lte: BigDecimal
+  amount1Out_in: [BigDecimal!]
+  amount1Out_not_in: [BigDecimal!]
+  to: Bytes
+  to_not: Bytes
+  to_in: [Bytes!]
+  to_not_in: [Bytes!]
+  to_contains: Bytes
+  to_not_contains: Bytes
   logIndex: BigInt
   logIndex_not: BigInt
   logIndex_gt: BigInt
@@ -2680,19 +2680,19 @@ input Exchange_Swap_filter {
   logIndex_lte: BigInt
   logIndex_in: [BigInt!]
   logIndex_not_in: [BigInt!]
-  amountUSD: Exchange_BigDecimal
-  amountUSD_not: Exchange_BigDecimal
-  amountUSD_gt: Exchange_BigDecimal
-  amountUSD_lt: Exchange_BigDecimal
-  amountUSD_gte: Exchange_BigDecimal
-  amountUSD_lte: Exchange_BigDecimal
-  amountUSD_in: [Exchange_BigDecimal!]
-  amountUSD_not_in: [Exchange_BigDecimal!]
+  amountUSD: BigDecimal
+  amountUSD_not: BigDecimal
+  amountUSD_gt: BigDecimal
+  amountUSD_lt: BigDecimal
+  amountUSD_gte: BigDecimal
+  amountUSD_lte: BigDecimal
+  amountUSD_in: [BigDecimal!]
+  amountUSD_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Swap_orderBy {
+enum Swap_orderBy {
   id
   transaction
   timestamp
@@ -2707,42 +2707,42 @@ enum Exchange_Swap_orderBy {
   amountUSD
 }
 
-type Exchange_Token {
+type Token {
   id: ID!
-  factory: Exchange_Factory!
+  factory: Factory!
   symbol: String!
   name: String!
   decimals: BigInt!
   totalSupply: BigInt!
-  volume: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
-  untrackedVolumeUSD: Exchange_BigDecimal!
+  volume: BigDecimal!
+  volumeUSD: BigDecimal!
+  untrackedVolumeUSD: BigDecimal!
   txCount: BigInt!
-  liquidity: Exchange_BigDecimal!
-  derivedETH: Exchange_BigDecimal!
-  hourData(skip: Int = 0, first: Int = 100, orderBy: Exchange_TokenHourData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_TokenHourData_filter): [Exchange_TokenHourData!]!
-  dayData(skip: Int = 0, first: Int = 100, orderBy: Exchange_TokenDayData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_TokenDayData_filter): [Exchange_TokenDayData!]!
-  basePairs(skip: Int = 0, first: Int = 100, orderBy: Exchange_Pair_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Pair_filter): [Exchange_Pair!]!
-  quotePairs(skip: Int = 0, first: Int = 100, orderBy: Exchange_Pair_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Pair_filter): [Exchange_Pair!]!
-  basePairsDayData(skip: Int = 0, first: Int = 100, orderBy: Exchange_PairDayData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_PairDayData_filter): [Exchange_PairDayData!]!
-  quotePairsDayData(skip: Int = 0, first: Int = 100, orderBy: Exchange_PairDayData_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_PairDayData_filter): [Exchange_PairDayData!]!
+  liquidity: BigDecimal!
+  derivedETH: BigDecimal!
+  hourData(skip: Int = 0, first: Int = 100, orderBy: TokenHourData_orderBy, orderDirection: OrderDirection, where: TokenHourData_filter): [TokenHourData!]!
+  dayData(skip: Int = 0, first: Int = 100, orderBy: TokenDayData_orderBy, orderDirection: OrderDirection, where: TokenDayData_filter): [TokenDayData!]!
+  basePairs(skip: Int = 0, first: Int = 100, orderBy: Pair_orderBy, orderDirection: OrderDirection, where: Pair_filter): [Pair!]!
+  quotePairs(skip: Int = 0, first: Int = 100, orderBy: Pair_orderBy, orderDirection: OrderDirection, where: Pair_filter): [Pair!]!
+  basePairsDayData(skip: Int = 0, first: Int = 100, orderBy: PairDayData_orderBy, orderDirection: OrderDirection, where: PairDayData_filter): [PairDayData!]!
+  quotePairsDayData(skip: Int = 0, first: Int = 100, orderBy: PairDayData_orderBy, orderDirection: OrderDirection, where: PairDayData_filter): [PairDayData!]!
 }
 
-type Exchange_TokenDayData {
+type TokenDayData {
   id: ID!
   date: Int!
-  token: Exchange_Token!
-  volume: Exchange_BigDecimal!
-  volumeETH: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
+  token: Token!
+  volume: BigDecimal!
+  volumeETH: BigDecimal!
+  volumeUSD: BigDecimal!
   txCount: BigInt!
-  liquidity: Exchange_BigDecimal!
-  liquidityETH: Exchange_BigDecimal!
-  liquidityUSD: Exchange_BigDecimal!
-  priceUSD: Exchange_BigDecimal!
+  liquidity: BigDecimal!
+  liquidityETH: BigDecimal!
+  liquidityUSD: BigDecimal!
+  priceUSD: BigDecimal!
 }
 
-input Exchange_TokenDayData_filter {
+input TokenDayData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -2779,31 +2779,31 @@ input Exchange_TokenDayData_filter {
   token_ends_with_nocase: String
   token_not_ends_with: String
   token_not_ends_with_nocase: String
-  token_: Exchange_Token_filter
-  volume: Exchange_BigDecimal
-  volume_not: Exchange_BigDecimal
-  volume_gt: Exchange_BigDecimal
-  volume_lt: Exchange_BigDecimal
-  volume_gte: Exchange_BigDecimal
-  volume_lte: Exchange_BigDecimal
-  volume_in: [Exchange_BigDecimal!]
-  volume_not_in: [Exchange_BigDecimal!]
-  volumeETH: Exchange_BigDecimal
-  volumeETH_not: Exchange_BigDecimal
-  volumeETH_gt: Exchange_BigDecimal
-  volumeETH_lt: Exchange_BigDecimal
-  volumeETH_gte: Exchange_BigDecimal
-  volumeETH_lte: Exchange_BigDecimal
-  volumeETH_in: [Exchange_BigDecimal!]
-  volumeETH_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
+  token_: Token_filter
+  volume: BigDecimal
+  volume_not: BigDecimal
+  volume_gt: BigDecimal
+  volume_lt: BigDecimal
+  volume_gte: BigDecimal
+  volume_lte: BigDecimal
+  volume_in: [BigDecimal!]
+  volume_not_in: [BigDecimal!]
+  volumeETH: BigDecimal
+  volumeETH_not: BigDecimal
+  volumeETH_gt: BigDecimal
+  volumeETH_lt: BigDecimal
+  volumeETH_gte: BigDecimal
+  volumeETH_lte: BigDecimal
+  volumeETH_in: [BigDecimal!]
+  volumeETH_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -2812,43 +2812,43 @@ input Exchange_TokenDayData_filter {
   txCount_lte: BigInt
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
-  liquidity: Exchange_BigDecimal
-  liquidity_not: Exchange_BigDecimal
-  liquidity_gt: Exchange_BigDecimal
-  liquidity_lt: Exchange_BigDecimal
-  liquidity_gte: Exchange_BigDecimal
-  liquidity_lte: Exchange_BigDecimal
-  liquidity_in: [Exchange_BigDecimal!]
-  liquidity_not_in: [Exchange_BigDecimal!]
-  liquidityETH: Exchange_BigDecimal
-  liquidityETH_not: Exchange_BigDecimal
-  liquidityETH_gt: Exchange_BigDecimal
-  liquidityETH_lt: Exchange_BigDecimal
-  liquidityETH_gte: Exchange_BigDecimal
-  liquidityETH_lte: Exchange_BigDecimal
-  liquidityETH_in: [Exchange_BigDecimal!]
-  liquidityETH_not_in: [Exchange_BigDecimal!]
-  liquidityUSD: Exchange_BigDecimal
-  liquidityUSD_not: Exchange_BigDecimal
-  liquidityUSD_gt: Exchange_BigDecimal
-  liquidityUSD_lt: Exchange_BigDecimal
-  liquidityUSD_gte: Exchange_BigDecimal
-  liquidityUSD_lte: Exchange_BigDecimal
-  liquidityUSD_in: [Exchange_BigDecimal!]
-  liquidityUSD_not_in: [Exchange_BigDecimal!]
-  priceUSD: Exchange_BigDecimal
-  priceUSD_not: Exchange_BigDecimal
-  priceUSD_gt: Exchange_BigDecimal
-  priceUSD_lt: Exchange_BigDecimal
-  priceUSD_gte: Exchange_BigDecimal
-  priceUSD_lte: Exchange_BigDecimal
-  priceUSD_in: [Exchange_BigDecimal!]
-  priceUSD_not_in: [Exchange_BigDecimal!]
+  liquidity: BigDecimal
+  liquidity_not: BigDecimal
+  liquidity_gt: BigDecimal
+  liquidity_lt: BigDecimal
+  liquidity_gte: BigDecimal
+  liquidity_lte: BigDecimal
+  liquidity_in: [BigDecimal!]
+  liquidity_not_in: [BigDecimal!]
+  liquidityETH: BigDecimal
+  liquidityETH_not: BigDecimal
+  liquidityETH_gt: BigDecimal
+  liquidityETH_lt: BigDecimal
+  liquidityETH_gte: BigDecimal
+  liquidityETH_lte: BigDecimal
+  liquidityETH_in: [BigDecimal!]
+  liquidityETH_not_in: [BigDecimal!]
+  liquidityUSD: BigDecimal
+  liquidityUSD_not: BigDecimal
+  liquidityUSD_gt: BigDecimal
+  liquidityUSD_lt: BigDecimal
+  liquidityUSD_gte: BigDecimal
+  liquidityUSD_lte: BigDecimal
+  liquidityUSD_in: [BigDecimal!]
+  liquidityUSD_not_in: [BigDecimal!]
+  priceUSD: BigDecimal
+  priceUSD_not: BigDecimal
+  priceUSD_gt: BigDecimal
+  priceUSD_lt: BigDecimal
+  priceUSD_gte: BigDecimal
+  priceUSD_lte: BigDecimal
+  priceUSD_in: [BigDecimal!]
+  priceUSD_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_TokenDayData_orderBy {
+enum TokenDayData_orderBy {
   id
   date
   token
@@ -2862,21 +2862,21 @@ enum Exchange_TokenDayData_orderBy {
   priceUSD
 }
 
-type Exchange_TokenHourData {
+type TokenHourData {
   id: ID!
   date: Int!
-  token: Exchange_Token!
-  volume: Exchange_BigDecimal!
-  volumeETH: Exchange_BigDecimal!
-  volumeUSD: Exchange_BigDecimal!
+  token: Token!
+  volume: BigDecimal!
+  volumeETH: BigDecimal!
+  volumeUSD: BigDecimal!
   txCount: BigInt!
-  liquidity: Exchange_BigDecimal!
-  liquidityETH: Exchange_BigDecimal!
-  liquidityUSD: Exchange_BigDecimal!
-  priceUSD: Exchange_BigDecimal!
+  liquidity: BigDecimal!
+  liquidityETH: BigDecimal!
+  liquidityUSD: BigDecimal!
+  priceUSD: BigDecimal!
 }
 
-input Exchange_TokenHourData_filter {
+input TokenHourData_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -2913,31 +2913,31 @@ input Exchange_TokenHourData_filter {
   token_ends_with_nocase: String
   token_not_ends_with: String
   token_not_ends_with_nocase: String
-  token_: Exchange_Token_filter
-  volume: Exchange_BigDecimal
-  volume_not: Exchange_BigDecimal
-  volume_gt: Exchange_BigDecimal
-  volume_lt: Exchange_BigDecimal
-  volume_gte: Exchange_BigDecimal
-  volume_lte: Exchange_BigDecimal
-  volume_in: [Exchange_BigDecimal!]
-  volume_not_in: [Exchange_BigDecimal!]
-  volumeETH: Exchange_BigDecimal
-  volumeETH_not: Exchange_BigDecimal
-  volumeETH_gt: Exchange_BigDecimal
-  volumeETH_lt: Exchange_BigDecimal
-  volumeETH_gte: Exchange_BigDecimal
-  volumeETH_lte: Exchange_BigDecimal
-  volumeETH_in: [Exchange_BigDecimal!]
-  volumeETH_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
+  token_: Token_filter
+  volume: BigDecimal
+  volume_not: BigDecimal
+  volume_gt: BigDecimal
+  volume_lt: BigDecimal
+  volume_gte: BigDecimal
+  volume_lte: BigDecimal
+  volume_in: [BigDecimal!]
+  volume_not_in: [BigDecimal!]
+  volumeETH: BigDecimal
+  volumeETH_not: BigDecimal
+  volumeETH_gt: BigDecimal
+  volumeETH_lt: BigDecimal
+  volumeETH_gte: BigDecimal
+  volumeETH_lte: BigDecimal
+  volumeETH_in: [BigDecimal!]
+  volumeETH_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -2946,43 +2946,43 @@ input Exchange_TokenHourData_filter {
   txCount_lte: BigInt
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
-  liquidity: Exchange_BigDecimal
-  liquidity_not: Exchange_BigDecimal
-  liquidity_gt: Exchange_BigDecimal
-  liquidity_lt: Exchange_BigDecimal
-  liquidity_gte: Exchange_BigDecimal
-  liquidity_lte: Exchange_BigDecimal
-  liquidity_in: [Exchange_BigDecimal!]
-  liquidity_not_in: [Exchange_BigDecimal!]
-  liquidityETH: Exchange_BigDecimal
-  liquidityETH_not: Exchange_BigDecimal
-  liquidityETH_gt: Exchange_BigDecimal
-  liquidityETH_lt: Exchange_BigDecimal
-  liquidityETH_gte: Exchange_BigDecimal
-  liquidityETH_lte: Exchange_BigDecimal
-  liquidityETH_in: [Exchange_BigDecimal!]
-  liquidityETH_not_in: [Exchange_BigDecimal!]
-  liquidityUSD: Exchange_BigDecimal
-  liquidityUSD_not: Exchange_BigDecimal
-  liquidityUSD_gt: Exchange_BigDecimal
-  liquidityUSD_lt: Exchange_BigDecimal
-  liquidityUSD_gte: Exchange_BigDecimal
-  liquidityUSD_lte: Exchange_BigDecimal
-  liquidityUSD_in: [Exchange_BigDecimal!]
-  liquidityUSD_not_in: [Exchange_BigDecimal!]
-  priceUSD: Exchange_BigDecimal
-  priceUSD_not: Exchange_BigDecimal
-  priceUSD_gt: Exchange_BigDecimal
-  priceUSD_lt: Exchange_BigDecimal
-  priceUSD_gte: Exchange_BigDecimal
-  priceUSD_lte: Exchange_BigDecimal
-  priceUSD_in: [Exchange_BigDecimal!]
-  priceUSD_not_in: [Exchange_BigDecimal!]
+  liquidity: BigDecimal
+  liquidity_not: BigDecimal
+  liquidity_gt: BigDecimal
+  liquidity_lt: BigDecimal
+  liquidity_gte: BigDecimal
+  liquidity_lte: BigDecimal
+  liquidity_in: [BigDecimal!]
+  liquidity_not_in: [BigDecimal!]
+  liquidityETH: BigDecimal
+  liquidityETH_not: BigDecimal
+  liquidityETH_gt: BigDecimal
+  liquidityETH_lt: BigDecimal
+  liquidityETH_gte: BigDecimal
+  liquidityETH_lte: BigDecimal
+  liquidityETH_in: [BigDecimal!]
+  liquidityETH_not_in: [BigDecimal!]
+  liquidityUSD: BigDecimal
+  liquidityUSD_not: BigDecimal
+  liquidityUSD_gt: BigDecimal
+  liquidityUSD_lt: BigDecimal
+  liquidityUSD_gte: BigDecimal
+  liquidityUSD_lte: BigDecimal
+  liquidityUSD_in: [BigDecimal!]
+  liquidityUSD_not_in: [BigDecimal!]
+  priceUSD: BigDecimal
+  priceUSD_not: BigDecimal
+  priceUSD_gt: BigDecimal
+  priceUSD_lt: BigDecimal
+  priceUSD_gte: BigDecimal
+  priceUSD_lte: BigDecimal
+  priceUSD_in: [BigDecimal!]
+  priceUSD_not_in: [BigDecimal!]
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_TokenHourData_orderBy {
+enum TokenHourData_orderBy {
   id
   date
   token
@@ -2996,7 +2996,7 @@ enum Exchange_TokenHourData_orderBy {
   priceUSD
 }
 
-input Exchange_Token_filter {
+input Token_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -3025,7 +3025,7 @@ input Exchange_Token_filter {
   factory_ends_with_nocase: String
   factory_not_ends_with: String
   factory_not_ends_with_nocase: String
-  factory_: Exchange_Factory_filter
+  factory_: Factory_filter
   symbol: String
   symbol_not: String
   symbol_gt: String
@@ -3082,30 +3082,30 @@ input Exchange_Token_filter {
   totalSupply_lte: BigInt
   totalSupply_in: [BigInt!]
   totalSupply_not_in: [BigInt!]
-  volume: Exchange_BigDecimal
-  volume_not: Exchange_BigDecimal
-  volume_gt: Exchange_BigDecimal
-  volume_lt: Exchange_BigDecimal
-  volume_gte: Exchange_BigDecimal
-  volume_lte: Exchange_BigDecimal
-  volume_in: [Exchange_BigDecimal!]
-  volume_not_in: [Exchange_BigDecimal!]
-  volumeUSD: Exchange_BigDecimal
-  volumeUSD_not: Exchange_BigDecimal
-  volumeUSD_gt: Exchange_BigDecimal
-  volumeUSD_lt: Exchange_BigDecimal
-  volumeUSD_gte: Exchange_BigDecimal
-  volumeUSD_lte: Exchange_BigDecimal
-  volumeUSD_in: [Exchange_BigDecimal!]
-  volumeUSD_not_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD: Exchange_BigDecimal
-  untrackedVolumeUSD_not: Exchange_BigDecimal
-  untrackedVolumeUSD_gt: Exchange_BigDecimal
-  untrackedVolumeUSD_lt: Exchange_BigDecimal
-  untrackedVolumeUSD_gte: Exchange_BigDecimal
-  untrackedVolumeUSD_lte: Exchange_BigDecimal
-  untrackedVolumeUSD_in: [Exchange_BigDecimal!]
-  untrackedVolumeUSD_not_in: [Exchange_BigDecimal!]
+  volume: BigDecimal
+  volume_not: BigDecimal
+  volume_gt: BigDecimal
+  volume_lt: BigDecimal
+  volume_gte: BigDecimal
+  volume_lte: BigDecimal
+  volume_in: [BigDecimal!]
+  volume_not_in: [BigDecimal!]
+  volumeUSD: BigDecimal
+  volumeUSD_not: BigDecimal
+  volumeUSD_gt: BigDecimal
+  volumeUSD_lt: BigDecimal
+  volumeUSD_gte: BigDecimal
+  volumeUSD_lte: BigDecimal
+  volumeUSD_in: [BigDecimal!]
+  volumeUSD_not_in: [BigDecimal!]
+  untrackedVolumeUSD: BigDecimal
+  untrackedVolumeUSD_not: BigDecimal
+  untrackedVolumeUSD_gt: BigDecimal
+  untrackedVolumeUSD_lt: BigDecimal
+  untrackedVolumeUSD_gte: BigDecimal
+  untrackedVolumeUSD_lte: BigDecimal
+  untrackedVolumeUSD_in: [BigDecimal!]
+  untrackedVolumeUSD_not_in: [BigDecimal!]
   txCount: BigInt
   txCount_not: BigInt
   txCount_gt: BigInt
@@ -3114,33 +3114,33 @@ input Exchange_Token_filter {
   txCount_lte: BigInt
   txCount_in: [BigInt!]
   txCount_not_in: [BigInt!]
-  liquidity: Exchange_BigDecimal
-  liquidity_not: Exchange_BigDecimal
-  liquidity_gt: Exchange_BigDecimal
-  liquidity_lt: Exchange_BigDecimal
-  liquidity_gte: Exchange_BigDecimal
-  liquidity_lte: Exchange_BigDecimal
-  liquidity_in: [Exchange_BigDecimal!]
-  liquidity_not_in: [Exchange_BigDecimal!]
-  derivedETH: Exchange_BigDecimal
-  derivedETH_not: Exchange_BigDecimal
-  derivedETH_gt: Exchange_BigDecimal
-  derivedETH_lt: Exchange_BigDecimal
-  derivedETH_gte: Exchange_BigDecimal
-  derivedETH_lte: Exchange_BigDecimal
-  derivedETH_in: [Exchange_BigDecimal!]
-  derivedETH_not_in: [Exchange_BigDecimal!]
-  hourData_: Exchange_TokenHourData_filter
-  dayData_: Exchange_TokenDayData_filter
-  basePairs_: Exchange_Pair_filter
-  quotePairs_: Exchange_Pair_filter
-  basePairsDayData_: Exchange_PairDayData_filter
-  quotePairsDayData_: Exchange_PairDayData_filter
+  liquidity: BigDecimal
+  liquidity_not: BigDecimal
+  liquidity_gt: BigDecimal
+  liquidity_lt: BigDecimal
+  liquidity_gte: BigDecimal
+  liquidity_lte: BigDecimal
+  liquidity_in: [BigDecimal!]
+  liquidity_not_in: [BigDecimal!]
+  derivedETH: BigDecimal
+  derivedETH_not: BigDecimal
+  derivedETH_gt: BigDecimal
+  derivedETH_lt: BigDecimal
+  derivedETH_gte: BigDecimal
+  derivedETH_lte: BigDecimal
+  derivedETH_in: [BigDecimal!]
+  derivedETH_not_in: [BigDecimal!]
+  hourData_: TokenHourData_filter
+  dayData_: TokenDayData_filter
+  basePairs_: Pair_filter
+  quotePairs_: Pair_filter
+  basePairsDayData_: PairDayData_filter
+  quotePairsDayData_: PairDayData_filter
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Token_orderBy {
+enum Token_orderBy {
   id
   factory
   symbol
@@ -3161,16 +3161,16 @@ enum Exchange_Token_orderBy {
   quotePairsDayData
 }
 
-type Exchange_Transaction {
+type Transaction {
   id: ID!
   blockNumber: BigInt!
   timestamp: BigInt!
-  mints(skip: Int = 0, first: Int = 100, orderBy: Exchange_Mint_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Mint_filter): [Exchange_Mint]!
-  burns(skip: Int = 0, first: Int = 100, orderBy: Exchange_Burn_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Burn_filter): [Exchange_Burn]!
-  swaps(skip: Int = 0, first: Int = 100, orderBy: Exchange_Swap_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_Swap_filter): [Exchange_Swap]!
+  mints(skip: Int = 0, first: Int = 100, orderBy: Mint_orderBy, orderDirection: OrderDirection, where: Mint_filter): [Mint]!
+  burns(skip: Int = 0, first: Int = 100, orderBy: Burn_orderBy, orderDirection: OrderDirection, where: Burn_filter): [Burn]!
+  swaps(skip: Int = 0, first: Int = 100, orderBy: Swap_orderBy, orderDirection: OrderDirection, where: Swap_filter): [Swap]!
 }
 
-input Exchange_Transaction_filter {
+input Transaction_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -3201,26 +3201,26 @@ input Exchange_Transaction_filter {
   mints_contains_nocase: [String!]
   mints_not_contains: [String!]
   mints_not_contains_nocase: [String!]
-  mints_: Exchange_Mint_filter
+  mints_: Mint_filter
   burns: [String!]
   burns_not: [String!]
   burns_contains: [String!]
   burns_contains_nocase: [String!]
   burns_not_contains: [String!]
   burns_not_contains_nocase: [String!]
-  burns_: Exchange_Burn_filter
+  burns_: Burn_filter
   swaps: [String!]
   swaps_not: [String!]
   swaps_contains: [String!]
   swaps_contains_nocase: [String!]
   swaps_not_contains: [String!]
   swaps_not_contains_nocase: [String!]
-  swaps_: Exchange_Swap_filter
+  swaps_: Swap_filter
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_Transaction_orderBy {
+enum Transaction_orderBy {
   id
   blockNumber
   timestamp
@@ -3229,12 +3229,12 @@ enum Exchange_Transaction_orderBy {
   swaps
 }
 
-type Exchange_User {
+type User {
   id: ID!
-  liquidityPositions(skip: Int = 0, first: Int = 100, orderBy: Exchange_LiquidityPosition_orderBy, orderDirection: Exchange_OrderDirection, where: Exchange_LiquidityPosition_filter): [Exchange_LiquidityPosition!]!
+  liquidityPositions(skip: Int = 0, first: Int = 100, orderBy: LiquidityPosition_orderBy, orderDirection: OrderDirection, where: LiquidityPosition_filter): [LiquidityPosition!]!
 }
 
-input Exchange_User_filter {
+input User_filter {
   id: ID
   id_not: ID
   id_gt: ID
@@ -3243,19 +3243,19 @@ input Exchange_User_filter {
   id_lte: ID
   id_in: [ID!]
   id_not_in: [ID!]
-  liquidityPositions_: Exchange_LiquidityPosition_filter
+  liquidityPositions_: LiquidityPosition_filter
   """Filter for the block changed event."""
-  _change_block: Exchange_BlockChangedFilter
+  _change_block: BlockChangedFilter
 }
 
-enum Exchange_User_orderBy {
+enum User_orderBy {
   id
   liquidityPositions
 }
 
-type Exchange__Block_ {
+type _Block_ {
   """The hash of the block"""
-  hash: Exchange_Bytes
+  hash: Bytes
   """The block number"""
   number: Int!
   """Integer representation of the timestamp stored in blocks for the chain"""
@@ -3263,7 +3263,7 @@ type Exchange__Block_ {
 }
 
 """The type for the top-level _meta field"""
-type Exchange__Meta_ {
+type _Meta_ {
   """
   Information about a specific subgraph block. The hash of the block
   will be null if the _meta field has a block constraint that asks for
@@ -3271,14 +3271,14 @@ type Exchange__Meta_ {
   and therefore asks for the latest  block
   
   """
-  block: Exchange__Block_!
+  block: _Block_!
   """The deployment ID"""
   deployment: String!
   """If `true`, the subgraph encountered indexing errors at some past block"""
   hasIndexingErrors: Boolean!
 }
 
-enum Exchange__SubgraphErrorPolicy_ {
+enum _SubgraphErrorPolicy_ {
   """Data will be returned even if the subgraph has indexing errors"""
   allow
   """
